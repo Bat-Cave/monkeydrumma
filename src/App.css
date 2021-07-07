@@ -72,7 +72,7 @@ nav h1{
 }
 
 .item{
-  background: url('https://i.ibb.co/PwBzCxX/itemframe.png');
+  background: url(../src/images/itemframe.png);
   background-color: transparent;
   image-rendering: pixelated;
   width: 200px;
