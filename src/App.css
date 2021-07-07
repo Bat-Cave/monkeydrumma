@@ -1,38 +1,213 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+::-webkit-scrollbar {
+  width: 5px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0c1122;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #382444;
 }
 
-.App-header {
-  background-color: #282c34;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #523c66;
+}
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Righteous', cursive;
+  color: white;
+}
+
+body{
+  width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #333333;
+  background: url(../src/images/Background.png);
+  background-size: contain;
+  overflow-x: hidden;
+}
+
+nav{
+  width: 100%;
+  height: 84px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+nav h1{
+  background: url(../src/images/itemframe2wide.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  width: 600px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
+  font-size: 2em;
 }
 
-.App-link {
-  color: #61dafb;
+.items-container{
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.item{
+  background: url(../src/images/itemframe.png);
+  image-rendering: pixelated;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 16px 32px;
+}
+
+.item h3{
+  text-shadow: 0px 3px black;
+  margin: 4px 0;
+}
+
+.item-image{
+  image-rendering: pixelated;
+  width: 60px;
+  height: auto;
+  margin: 4px 0;
+}
+
+.price{
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price img{
+  width: 16px;
+  height: 16px;
+  margin: 0 8px;
+}
+
+button{
+  background: url(../src/images/button.png);
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 30px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .25s ease;
+  padding-bottom: 4px;
+}
+
+button:hover{
+  transform: translateY(-2px);
+}
+.modal-container{
+  background: rgba(102, 102, 102, .6);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fade-in .25s ease-in;
+}
+.modal{
+  background: url(../src/images/itemframe2.png);
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: slide-down .25s ease;
+}
+
+.modal p{
+  width: 80%;
+  text-align: center;
+}
+
+.modal code{
+  padding: 8px 16px;
+  color: green;
+  background: #333333;
+  border: 2px solid black;
+  margin: 8px;
+}
+
+#close{
+  background: url(../src/images/buttonsmall.png);
+  width: 30px;
+  height: 30px;
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+#code-copied{
+  position: absolute;
+  top: 75%;
+  animation: slide-down-code 5s;
+  opacity: 0;
+}
+
+@keyframes fade-in {
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+
+@keyframes slide-down {
+  0%{transform: translateY(-100%); opacity: 0;}
+  70%{transform: translateY(10%);}
+  100%{transform: translateY(0); opacity: 1;}
+}
+
+@keyframes slide-down-code {
+  0%{transform: translateY(-100%); opacity: 0;}
+  7%{transform: translateY(10%);}
+  10%{transform: translateY(0); opacity: 1;}
+  90%{transform: translateY(0); opacity: 1;}
+  95%{opacity: 0;}
+  100%{transform: translateY(-100%); opacity: 0;}
 }

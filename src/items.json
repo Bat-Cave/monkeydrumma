@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "owner": "",
+    "name": "Terran Planet",
+    "description": "",
+    "price": 50,
+    "url": "https://i.ibb.co/MgzS8zN/Terran.png"
+  },
+  {
+    "id": 2,
+    "owner": "",
+    "name": "Magmo",
+    "description": "",
+    "price": 150,
+    "url": "https://i.ibb.co/mFpS24w/Magmo.gif"
+  },
+  {
+    "id": 3,
+    "owner": "",
+    "name": "Nightblade",
+    "description": "",
+    "price": 100,
+    "url": "https://i.ibb.co/JRn1b7s/Nightblade.png"
+  }
+]
