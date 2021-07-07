@@ -30,12 +30,10 @@ let Home = () => {
     }
 
     useEffect(() => {
-
         let itemsArray = [];
         for(let j = 0; j < jsonItems.length; j++){
             itemsArray.push(jsonItems[j]);
         }
-        console.log(itemsArray);
         setItems(itemsArray);
     }, [])
 

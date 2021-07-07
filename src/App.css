@@ -73,6 +73,7 @@ nav h1{
 
 .item{
   background: url(../src/images/itemframe.png);
+  background-color: transparent;
   image-rendering: pixelated;
   width: 200px;
   height: 200px;
