@@ -1,12 +1,13 @@
 import gem from '../images/diamond.png';
 import jsonItems from '../items.json';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef} from 'react';
 let Home = () => {
 
     let [items, setItems] = useState([]);
     let [showModal, setShowModal] = useState(false);
     let [command, setCommand] = useState('');
     let [codeCopied, setCodeCopied] = useState(false);
+    const textAreaRef = useRef(null);
 
 
     let renderedItems = items.map((e, i) => {
@@ -37,6 +38,15 @@ let Home = () => {
         setItems(itemsArray);
     }, [])
 
+    function copyToClipboard(e) {
+        textAreaRef.current.select();
+        document.execCommand('copy');
+        // This is just personal preference.
+        // I prefer to not show the whole text area selected.
+        e.target.focus();
+    };
+
+
     return(
         <div className='home'>
             <nav>
@@ -55,14 +65,16 @@ let Home = () => {
                             setShowModal(false);
                         }}>X</button>
                         <p>Type this command in the twitch chat:</p>
-                        <code>{command}</code>
+                        <textarea id='command' ref={textAreaRef} defaultValue={command} readOnly autoFocus></textarea>
                         <button onClick={(e) => {
-                            e.stopPropagation();
-                            navigator.clipboard.writeText(command)
-                            setCodeCopied(true);
-                            setTimeout(() => {
-                                setCodeCopied(false);
-                            }, 5000)
+                            if(!codeCopied){
+                                e.stopPropagation();
+                                setCodeCopied(true);
+                                copyToClipboard(e);
+                                setTimeout(() => {
+                                    setCodeCopied(false);
+                                }, 5000)
+                            };
                         }}>Copy Code</button>
                         {codeCopied ? (
                             <p id='code-copied'>Code Copied!</p>

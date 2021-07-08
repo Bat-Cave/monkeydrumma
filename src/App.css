@@ -166,12 +166,19 @@ button:hover{
   text-align: center;
 }
 
-.modal code{
+.modal #command{
   padding: 8px 16px;
+  margin: 8px;
   color: green;
   background: #333333;
   border: 2px solid black;
   margin: 8px;
+  width: 70%;
+  height: 40px;
+  resize: none;
+  font-size: 14px;
+  overflow: hidden;
+  text-align: center;
 }
 
 #close{
