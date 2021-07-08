@@ -141,6 +141,7 @@ let Home = () => {
             <div className='searchContainer'>
                 <input onChange={(e) => setSearch(e.target.value.toLocaleLowerCase())} placeholder='Search'/>
                 <select onChange={(e) => setCurrentFilter(e.target.value)}>
+                    <option value='0'>Filter</option>
                     <option value='0'>None</option>
                     <option value='1'>{filters[1]}</option>
                     <option value='2'>{filters[2]}</option>
