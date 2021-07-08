@@ -19,7 +19,6 @@ let Home = () => {
                     <p>{e.price}</p>  
                     <img src={gem} alt='gems'/> 
                 </div>
-                <p>details</p>
                 <button onClick={() => buyHandler(e.name)}>Buy</button>
             </div>
         )
