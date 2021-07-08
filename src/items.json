@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "owner": "",
+    "owner": "none",
     "name": "Terran Planet",
     "description": "",
     "price": 50,
@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "owner": "",
+    "owner": "none",
     "name": "Magmo",
     "description": "",
     "price": 150,
@@ -17,10 +17,18 @@
   },
   {
     "id": 3,
-    "owner": "",
+    "owner": "none",
     "name": "Nightblade",
     "description": "",
     "price": 100,
     "url": "https://i.ibb.co/JRn1b7s/Nightblade.png"
+  },
+  {
+    "id": 4,
+    "owner": "none",
+    "name": "Wifey",
+    "description": "",
+    "price": 5000,
+    "url": "https://i.ibb.co/X4dPx1h/Wifey.png"
   }
 ]
