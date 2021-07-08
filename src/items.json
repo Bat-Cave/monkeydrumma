@@ -4,24 +4,27 @@
     "owner": "none",
     "name": "Terran Planet",
     "description": "",
-    "price": 50,
-    "url": "https://i.ibb.co/MgzS8zN/Terran.png"
+    "price": 25,
+    "url": "https://i.ibb.co/MgzS8zN/Terran.png",
+    "rarity": "uncommon"
   },
   {
     "id": 2,
     "owner": "none",
     "name": "Magmo",
     "description": "",
-    "price": 150,
-    "url": "https://i.ibb.co/mFpS24w/Magmo.gif"
+    "price": 110,
+    "url": "https://i.ibb.co/mFpS24w/Magmo.gif",
+    "rarity": "rare"
   },
   {
     "id": 3,
     "owner": "none",
     "name": "Nightblade",
     "description": "",
-    "price": 100,
-    "url": "https://i.ibb.co/JRn1b7s/Nightblade.png"
+    "price": 75,
+    "url": "https://i.ibb.co/JRn1b7s/Nightblade.png",
+    "rarity": "uncommon"
   },
   {
     "id": 4,
@@ -29,6 +32,286 @@
     "name": "Wifey",
     "description": "",
     "price": 5000,
-    "url": "https://i.ibb.co/X4dPx1h/Wifey.png"
+    "url": "https://i.ibb.co/X4dPx1h/Wifey.png",
+    "rarity": "legendary"
+  },
+  {
+    "id": 5,
+    "owner": "none",
+    "name": "Vita",
+    "description": "",
+    "price": 125,
+    "url": "https://i.ibb.co/rsSnFBK/Vita.gif",
+    "rarity": "rare"
+  },
+  {
+    "id": 6,
+    "owner": "none",
+    "name": "Moon",
+    "description": "",
+    "price": 75,
+    "url": "https://i.ibb.co/4Mfv58X/Moon.gif",
+    "rarity": "uncommon"
+  },
+  {
+    "id": 7,
+    "owner": "none",
+    "name": "Nekonin",
+    "description": "",
+    "price": 130,
+    "url": "https://i.ibb.co/dgfjxgL/Nekonin.gif",
+    "rarity": "epic"
+  },
+  {
+    "id": 8,
+    "owner": "none",
+    "name": "Mystico",
+    "description": "",
+    "price": 150,
+    "url": "https://i.ibb.co/b3Rwz7t/Mystico.gif",
+    "rarity": "epic"
+  },
+  {
+    "id": 9,
+    "owner": "none",
+    "name": "Martial Hero",
+    "description": "",
+    "price": 190,
+    "url": "https://i.ibb.co/g3GPyq2/Martial-Hero.gif",
+    "rarity": "epic"
+  },
+  {
+    "id": 10,
+    "owner": "none",
+    "name": "Rock",
+    "description": "",
+    "price": 3,
+    "url": "https://i.ibb.co/h2mvwQn/Rock.png",
+    "rarity": "common"
+  },
+  {
+    "id": 11,
+    "owner": "none",
+    "name": "Pink Monster",
+    "description": "",
+    "price": 200,
+    "url": "https://i.ibb.co/540P15F/Pink-Monster.gif",
+    "rarity": "legendary"
+  },
+  {
+    "id": 12,
+    "owner": "none",
+    "name": "Fire Worm",
+    "description": "",
+    "price": 127,
+    "url": "https://i.ibb.co/qmrdTHg/FireWorm.gif",
+    "rarity": "rare"
+  },
+  {
+    "id": 13,
+    "owner": "none",
+    "name": "Stone Golem",
+    "description": "",
+    "price": 260,
+    "url": "https://i.ibb.co/PwchcbB/Stone-Golem.gif",
+    "rarity": "legendary"
+  },
+  {
+    "id": 14,
+    "owner": "none",
+    "name": "Demon",
+    "description": "",
+    "price": 245,
+    "url": "https://i.ibb.co/0KnwDMt/Demon.gif",
+    "rarity": "epic"
+  },
+  {
+    "id": 15,
+    "owner": "none",
+    "name": "Wolf",
+    "description": "",
+    "price": 60,
+    "url": "https://i.ibb.co/G9bb3cj/Wolf.gif",
+    "rarity": "uncommon"
+  },
+  {
+    "id": 16,
+    "owner": "none",
+    "name": "Glazed Corn Flakes",
+    "description": "",
+    "price": 420,
+    "url": "https://i.ibb.co/YZyxhvq/Glazed-Corn-Flakes.png",
+    "rarity": "legendary"
+  },
+  {
+    "id": 17,
+    "owner": "none",
+    "name": "Feather",
+    "description": "",
+    "price": 6,
+    "url": "https://i.ibb.co/6Z0q2gB/Feather.png",
+    "rarity": "common"
+  },
+  {
+    "id": 18,
+    "owner": "none",
+    "name": "Health Potion",
+    "description": "",
+    "price": 11,
+    "url": "https://i.ibb.co/PM0d5n1/Health-Potion.png",
+    "rarity": "common"
+  },
+  {
+    "id": 19,
+    "owner": "none",
+    "name": "Love Potion",
+    "description": "",
+    "price": 69,
+    "url": "https://i.ibb.co/FD9W16r/Love-Potion.png",
+    "rarity": "rare"
+  },
+  {
+    "id": 20,
+    "owner": "none",
+    "name": "Poison Potion",
+    "description": "",
+    "price": 13,
+    "url": "https://i.ibb.co/xX3gms8/Poison-Potion.png",
+    "rarity": "uncommon"
+  },
+  {
+    "id": 21,
+    "owner": "none",
+    "name": "Stamina Potion",
+    "description": "",
+    "price": 9,
+    "url": "https://i.ibb.co/3kKw1dZ/Stamina-Potion.png",
+    "rarity": "common"
+  },
+  {
+    "id": 22,
+    "owner": "none",
+    "name": "Chile",
+    "description": "",
+    "price": 2,
+    "url": "https://i.ibb.co/3rkFWnc/Chile.png",
+    "rarity": "common"
+  },
+  {
+    "id": 23,
+    "owner": "none",
+    "name": "Egg",
+    "description": "",
+    "price": 2,
+    "url": "https://i.ibb.co/P9wftGZ/Egg.png",
+    "rarity": "common"
+  },
+  {
+    "id": 24,
+    "owner": "none",
+    "name": "Raw Meat",
+    "description": "",
+    "price": 3,
+    "url": "https://i.ibb.co/9yWwCWg/RawMeat.png",
+    "rarity": "common"
+  },
+  {
+    "id": 25,
+    "owner": "none",
+    "name": "Stick",
+    "description": "",
+    "price": 1,
+    "url": "https://i.ibb.co/1Lz2bw9/Stick.png",
+    "rarity": "common"
+  },
+  {
+    "id": 26,
+    "owner": "none",
+    "name": "Wood",
+    "description": "",
+    "price": 4,
+    "url": "https://i.ibb.co/s69XP0W/Wood.png",
+    "rarity": "common"
+  },
+  {
+    "id": 27,
+    "owner": "none",
+    "name": "Potato Chips",
+    "description": "",
+    "price": 7,
+    "url": "https://i.ibb.co/vcRS4Jw/Potato-Chips.png",
+    "rarity": "uncommon"
+  },
+  {
+    "id": 28,
+    "owner": "none",
+    "name": "Power Strip",
+    "description": "",
+    "price": 10,
+    "url": "https://i.ibb.co/p45MNtq/Power-Strip.png",
+    "rarity": "rare"
+  },
+  {
+    "id": 29,
+    "owner": "none",
+    "name": "Red Wine",
+    "description": "",
+    "price": 9,
+    "url": "https://i.ibb.co/TgrtsQS/RedWine.png",
+    "rarity": "uncommon"
+  },
+  {
+    "id": 30,
+    "owner": "none",
+    "name": "Rubber Duck",
+    "description": "",
+    "price": 14,
+    "url": "https://i.ibb.co/m5Qw41P/Rubber-Duck.png",
+    "rarity": "epic"
+  },
+  {
+    "id": 31,
+    "owner": "none",
+    "name": "Water",
+    "description": "",
+    "price": 2,
+    "url": "https://i.ibb.co/Ny8qCLs/Water.png",
+    "rarity": "common"
+  },
+  {
+    "id": 32,
+    "owner": "none",
+    "name": "Wet Wipe",
+    "description": "",
+    "price": 12,
+    "url": "https://i.ibb.co/xGcn9Yg/WetWipe.png",
+    "rarity": "rare"
+  },
+  {
+    "id": 33,
+    "owner": "none",
+    "name": "Bananas",
+    "description": "",
+    "price": 20,
+    "url": "https://i.ibb.co/QMKYP09/Bananas.png",
+    "rarity": "epic"
+  },
+  {
+    "id": 34,
+    "owner": "none",
+    "name": "Bathroom Cleaner",
+    "description": "",
+    "price": 7,
+    "url": "https://i.ibb.co/HDWtKHJ/Bathroom-Cleaner.png",
+    "rarity": "uncommon"
+  },
+  {
+    "id": 35,
+    "owner": "none",
+    "name": "Butter",
+    "description": "",
+    "price": 10,
+    "url": "https://i.ibb.co/cypw2JR/Butter.png",
+    "rarity": "rare"
   }
 ]

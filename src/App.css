@@ -11,12 +11,12 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #382444;
+  background: #18402a;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #523c66;
+  background: #2d6848;
 }
 
 
@@ -47,6 +47,7 @@ nav{
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all .25s ease;
 }
 
 nav h1{
@@ -61,6 +62,24 @@ nav h1{
   align-items: center;
   color: white;
   font-size: 2em;
+  transition: all .25s ease;
+}
+
+.searchContainer{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.searchContainer *{
+  color: black;
+  padding: 4px 8px;
+  width: 25%;
+  margin: 4px 5%;
+  min-width: 300px;
 }
 
 .items-container{
@@ -84,6 +103,19 @@ nav h1{
   justify-content: center;
   align-items: center;
   margin: 16px 32px;
+  transition: all .25s ease;
+}
+
+.item *{
+  transition: all .25s ease;
+}
+
+.item:hover{
+  transform: scale(1.2) ;
+}
+
+.item:hover *{
+  transform: scale(1) ;
 }
 
 .item h3{
@@ -114,6 +146,16 @@ nav h1{
   margin: 0 8px;
 }
 
+.loading{
+  width: 300px;
+  height: 300px;
+  background: url(../src/images/itemframe.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  image-rendering: pixelated;
+}
+
 button{
   background: url(../src/images/button.png);
   image-rendering: pixelated;
@@ -134,9 +176,25 @@ button{
 button:hover{
   transform: translateY(-2px);
 }
+
+.owned{
+  width: 100%;
+  height: auto;
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-4px);
+}
+
+.owned span{
+  font-size: 12px;
+}
+
+
 .modal-container{
   background: rgba(102, 102, 102, .6);
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -181,6 +239,7 @@ button:hover{
   font-size: 14px;
   overflow: hidden;
   text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 #close{
@@ -220,4 +279,35 @@ button:hover{
   90%{transform: translateY(0); opacity: 1;}
   95%{opacity: 0;}
   100%{transform: translateY(-100%); opacity: 0;}
+}
+
+
+
+@media (max-width: 600px) {
+  nav h1{
+    width: 300px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .item{
+    margin: 16px 2%;
+    width: 300px;
+    height: 300px;
+  }
+  .item h3{
+    text-shadow: 0px 2px 3px #523c66;
+    margin: 8px 0;
+    font-size: 24px;
+  }
+  .item p{
+    font-size: 22px;
+  }
+  .item-image{
+    image-rendering: pixelated;
+    width: auto;
+    height: 80px;
+    margin: 12px 0;
+  }
 }
