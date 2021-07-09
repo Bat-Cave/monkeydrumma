@@ -5,6 +5,7 @@ import ViewCollection from './Components/ViewCollection';
 
 export default (
     <Switch>
+        <Redirect path='/home' to='/' />
         <Route exact path='/' component={Home}/>
         <Route path='/viewcollection' component={ViewCollection}/>
     </Switch>
