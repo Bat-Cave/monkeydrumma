@@ -56,12 +56,6 @@ let Home = () => {
     }
 
     useEffect(() => {
-        //     let itemsArray = [];
-        //     for(let j = 0; j < jsonFile.length; j++){
-        //         itemsArray.push(jsonFile[j]);
-        //     }
-        //     setItems(itemsArray);
-        
         Tabletop.init({
             key: "1ZFa3jk0mz2SYAq4xCOPgFDL7ZJMb_ysG5fO-QwFedV8",
             simpleSheet: true
@@ -85,7 +79,6 @@ let Home = () => {
     
     useEffect(() => {
         let changeFilter = index => {
-            let sortedArray = [];
             let sortedPrice;
             let sortedName;
             switch(+index){
@@ -114,10 +107,12 @@ let Home = () => {
                     setItems(sortedName);
                     break
                 default :
-                    for(let j = 0; j < items.length; j++){
-                        sortedArray.push(items[j]);
-                    }
-                    setItems(sortedArray);
+                    Tabletop.init({
+                        key: "1ZFa3jk0mz2SYAq4xCOPgFDL7ZJMb_ysG5fO-QwFedV8",
+                        simpleSheet: true
+                    })
+                    .then((data) => setItems(data))
+                    .catch((err) => console.warn(err));
             }
         }
         changeFilter(currentFilter)

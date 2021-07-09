@@ -91,9 +91,12 @@ nav h1{
 }
 
 .welcome{
-  width: 100%;
+  width: calc(100% - 128px);
   height: auto;
-  padding: 16px 32px;
+  padding: 16px 64px;
+  margin: 0px 64px;
+  border-radius: 30px;
+  background: rgba(102, 102, 102, .6)
 }
 
 .welcome h3{
@@ -107,17 +110,18 @@ nav h1{
 }
 
 .welcome span{
-  color: #744eb5;
+  color: #9870dd;
 }
 
 .searchContainer{
-  width: 100%;
-  height: auto;
+  width: calc(100% - 128px);
+  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin: 0px 64px;
   margin-bottom: 32px;
   padding: 4px 32px;
 }
@@ -142,11 +146,6 @@ nav h1{
 .searchContainer div{
   display: flex;
   width: 100%;
-}
-
-.searchContainer div:last-child{
-  border-bottom: 2px solid white;
-  padding-bottom: 24px;
 }
 
 
