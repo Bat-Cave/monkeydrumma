@@ -82,7 +82,7 @@
   },
   {
     "id": 10,
-    "owner": "none",
+    "owner": "angelwolf_bryanne",
     "name": "Rock",
     "description": "",
     "price": 3,
@@ -172,7 +172,7 @@
   },
   {
     "id": 20,
-    "owner": "none",
+    "owner": "qtdragonfly",
     "name": "Poison Potion",
     "description": "",
     "price": 13,
@@ -199,7 +199,7 @@
   },
   {
     "id": 23,
-    "owner": "none",
+    "owner": "topchoppy",
     "name": "Egg",
     "description": "",
     "price": 2,
@@ -217,7 +217,7 @@
   },
   {
     "id": 25,
-    "owner": "none",
+    "owner": "siempje09",
     "name": "Stick",
     "description": "",
     "price": 1,
@@ -226,7 +226,7 @@
   },
   {
     "id": 26,
-    "owner": "none",
+    "owner": "angelwolf_bryanne",
     "name": "Wood",
     "description": "",
     "price": 4,
@@ -235,7 +235,7 @@
   },
   {
     "id": 27,
-    "owner": "none",
+    "owner": "qtdragonfly",
     "name": "Potato Chips",
     "description": "",
     "price": 7,
@@ -271,7 +271,7 @@
   },
   {
     "id": 31,
-    "owner": "none",
+    "owner": "cheesypizza99",
     "name": "Water",
     "description": "",
     "price": 2,
