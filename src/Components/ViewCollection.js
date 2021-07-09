@@ -58,7 +58,7 @@ let ViewCollection = () => {
                 <img className='titleGem2'  src={gem} alt='gem' />
             </h1>
             <div className='links'>
-                <Link to='/home'>back</Link>
+                <Link to='/'>back</Link>
             </div>
         </nav>
         <div className='welcome'>
