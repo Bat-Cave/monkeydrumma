@@ -48,7 +48,7 @@ let ViewCollection = () => {
 
 
     return(
-    <div className='home'>
+    <div className='home' id='collection'>
         <nav>
             <h1>
                 <img className='titleGem3' src={gem} alt='gem' />
@@ -58,11 +58,11 @@ let ViewCollection = () => {
                 <img className='titleGem2'  src={gem} alt='gem' />
             </h1>
             <div className='links'>
-                <Link to='/'>back</Link>
+                <Link to='/'>Home</Link>
+                <Link to='/shop'>Gem Shop</Link>
             </div>
         </nav>
-        <div className='welcome'>
-            <h3>Welcome!</h3>
+        <div className='welcome noborder'>
             <p>Enter your <span>twitch username</span> below to see your collection!</p>
         </div>
         <div className='searchContainer'>
@@ -76,7 +76,7 @@ let ViewCollection = () => {
             {searchedItems.length ? renderedItems : <h1>No Items to Display</h1>}
         </div>
         <div className='legend'>
-            <h4 id='legendLabel'>LEGEND</h4>
+            <h4 id='legendLabel'><i className="fas fa-chevron-right"></i></h4>
             <div>
                 <p>Common:</p>
                 <img src='https://i.ibb.co/gD7S7TX/common.gif' alt='common'/>

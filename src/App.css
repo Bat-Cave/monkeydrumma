@@ -44,7 +44,7 @@ body{
 
 nav{
   width: 100%;
-  height: 84px;
+  min-height: 84px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,6 +90,27 @@ nav h1{
   z-index: 1;
 }
 
+.links{
+  width: 600px;
+  height: 75px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+a{
+  text-decoration: none;
+  background: url(../src/images/button.png);
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 164px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .welcome{
   width: calc(100% - 128px);
   height: auto;
@@ -109,8 +130,63 @@ nav h1{
   padding: 32px;
 }
 
+.noborder{
+  width: calc(100% - 128px);
+  padding: 16px;
+  border-bottom: none;
+  text-align: center;
+}
+
+.noborder p{
+  width: 100%;
+  padding: 16px;
+  border-bottom: none;
+}
+
 .welcome span{
-  color: #9870dd;
+  color: #596f84;
+  text-shadow: 0 2px 3px #0c1122;
+}
+
+.biglink{
+  width: calc(100% - 128px);
+  min-height: 182px;
+  height: auto;
+  padding: 16px;
+  margin: 0px 64px;
+  border-radius: 30px;
+  background: rgba(102, 102, 102, .6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 64px;
+}
+
+.biglink img{
+  width: 150px;
+  height: auto;
+  image-rendering: auto;
+}
+
+.biglink h2{
+  width: 100%;
+  border-bottom: 4px solid white;
+}
+.biglink div{
+  width: calc(100% - 166px);
+  display: flex;
+  flex-direction: column;
+}
+.biglink > a{
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.biglink span{
+  text-shadow: 0 2px 3px #0c1122;
+  color: #596f84;
 }
 
 .searchContainer{
@@ -234,7 +310,7 @@ nav h1{
   background-color: transparent;
   image-rendering: pixelated;
   position: fixed;
-  left: -190px;
+  left: -400px;
   bottom: 8px;
   display: flex;
   flex-direction: column;
@@ -249,15 +325,29 @@ nav h1{
 }
 
 #legendLabel{
-  position: absolute;
-  right: -30%;
-  top: 50%;
-  transform: translate(-50%, -50%) rotate(90deg);
+  position: fixed;
+  left: 25px;
+  bottom: 12px;
+  transform: translate(-50%, -50%);
   transition: all .25s ease;
+  width: 30px;
+  height: 30px;
+  background: rgba(102, 102, 102, .6);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#legendLabel:hover .legend{
+  left: 8px;
 }
 
+#legendLabel:hover{
+  opacity: 0;
+}
 .legend:hover #legendLabel{
-  right: 150%;
+  opacity: 0;
 }
 
 .legend div{
