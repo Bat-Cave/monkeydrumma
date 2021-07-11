@@ -341,9 +341,6 @@ a{
   font-size: 24px;
 }
 
-#loaded{
-  animation: fade-out .5s ease;
-}
 
 .legend{
   width: 250px;

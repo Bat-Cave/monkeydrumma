@@ -8,8 +8,7 @@ let Home = () => {
     let [showModal, setShowModal] = useState(false);
     let [command, setCommand] = useState('');
     let [codeCopied, setCodeCopied] = useState(false);
-    let [itemsLoaded, setitemsLoaded] = useState('');
-    let [search, setSearch] = useState('');
+    // let [search, setSearch] = useState('');
     let [currentFilter, setCurrentFilter] = useState(0);
     const textAreaRef = useRef(null);
 
@@ -62,28 +61,25 @@ let Home = () => {
             simpleSheet: true
         })
         .then((data) => {
-            setitemsLoaded('loaded');
-            setTimeout(() => {
-                setItems(data);
-                setCurrentFilter(99);
-                setCurrentFilter(0);
-            }, 450)
+            setItems(data);
+            setCurrentFilter(99);
+            setCurrentFilter(0);
         })
         .catch((err) => console.warn(err));
         
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(() => {
-        let searchedItems = [];
-        for(let j = 0; j < items.length; j++){
-            if(items[j].name.toLowerCase().includes(search)){
-                searchedItems.push(items[j]);
-            }
-        }
-        setItems(searchedItems)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [search])
+    // useEffect(() => {
+    //     let searchedItems = [];
+    //     for(let j = 0; j < items.length; j++){
+    //         if(items[j].name.toLowerCase().includes(search)){
+    //             searchedItems.push(items[j]);
+    //         }
+    //     }
+    //     setItems(searchedItems)
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [search])
 
     
     useEffect(() => {
@@ -175,10 +171,10 @@ let Home = () => {
                 <p>Each item has a rarity value, <span>BUT</span> you won't know the rarity of the item you buy until the item is purchased. There is a rarity legend at the bottom-left side of the screen.</p>
             </div>
             <div className='searchContainer'>
-                <div>
+                {/* <div>
                     <span>Search:</span>
-                    <input onChange={(e) => setSearch(e.target.value.toLocaleLowerCase())} placeholder='Search'/>
-                </div>
+                    <input onChange={(e) => setSearch(e.target.value.toLowerCase())} placeholder='Search'/>
+                </div> */}
                 <div>
                     <span>Filter Items:</span>
                     <select onChange={(e) => setCurrentFilter(e.target.value)}>
@@ -191,7 +187,7 @@ let Home = () => {
                 </div>
             </div>
             <div className='items-container'>
-                {items.length ? renderedItems : <div className='loading' id={itemsLoaded}><div>Loading . . .</div></div>}
+                {items.length ? renderedItems : <div className='loading'><div>Loading . . .</div></div>}
             </div>
             <div className='legend'>
                 <h4 id='legendLabel'><i className="fas fa-chevron-right"></i></h4>
