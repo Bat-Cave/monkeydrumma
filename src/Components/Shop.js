@@ -65,7 +65,7 @@ let Home = () => {
             setitemsLoaded('loaded');
             setTimeout(() => {
                 setItems(data);
-                setCurrentFilter(5);
+                setCurrentFilter(99);
                 setCurrentFilter(0);
             }, 450)
         })
@@ -117,15 +117,27 @@ let Home = () => {
                     setItems(sortedName);
                     break
                 default :
-                    sortedOwner = [...items].sort(function(a, b){
+                    let ownedItems = [];
+                    let unOwnedItems = [];
+
+                    for(let i = 0; i < items.length; i++){
+                        items[i].owner === 'none' ? unOwnedItems.push(items[i]) : ownedItems.push(items[i])
+                    }
+                    let sortedUnowned = [...unOwnedItems].sort(function(a, b){
+                        return b.id - a.id;
+                    });
+                    sortedOwner = [...ownedItems].sort(function(a, b){
                         let ownerA = a.owner === 'none' ? '' : a.owner;
                         let ownerB = b.owner === 'none' ? '' : b.owner;
                         
-                        if(ownerA < ownerB) { return -1; }
-                        if(ownerA > ownerB) { return 1; }
+                        if(ownerA > ownerB) { return -1; }
+                        if(ownerA < ownerB) { return 1; }
                         return 0;
                     });
-                    setItems(sortedOwner);
+
+                    let joinedItems = sortedUnowned.concat(sortedOwner);
+
+                    setItems(joinedItems);
                     break
             }
         }
