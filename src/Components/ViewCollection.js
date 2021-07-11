@@ -28,6 +28,8 @@ let ViewCollection = () => {
         setSearchedItems(ownersItems)
     }
 
+    
+
     let renderedItems = searchedItems.map((e, i) => {
         let imageUrl = '';
         if(e.rarity === 'common'){imageUrl = 'https://i.ibb.co/gD7S7TX/common.gif'};
@@ -47,19 +49,22 @@ let ViewCollection = () => {
     })
 
 
+
+
+
     return(
     <div className='home' id='collection'>
         <nav>
             <h1>
                 <img className='titleGem3' src={gem} alt='gem' />
                 <img className='titleGem'  src={gem} alt='gem' />
-                Gem Shop
+                Collection
                 <img className='titleGem4' src={gem} alt='gem' />
                 <img className='titleGem2'  src={gem} alt='gem' />
             </h1>
             <div className='links'>
-                <Link to='/'>Home</Link>
-                <Link to='/shop'>Gem Shop</Link>
+                <Link to='/'><i className="fas fa-home"></i>Home</Link>
+                <Link to='/shop'><i className="fas fa-store-alt"></i>Gem Shop</Link>
             </div>
         </nav>
         <div className='welcome noborder'>

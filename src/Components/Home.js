@@ -16,15 +16,15 @@ let Home = () => {
                     <img className='titleGem2'  src={monkey} alt='gem' />
                 </h1>
                 <div className='links'>
-                    <Link to='/shop'>Gem Shop</Link>
-                    <Link to='/viewcollection'>Collections</Link>
+                    <Link to='/shop'><i className="fas fa-store-alt"></i>Gem Shop</Link>
+                    <Link to='/viewcollection'><i className="fas fa-shapes"></i>Collections</Link>
                 </div>
             </nav>
             <div className='biglink'>
                 <a href='https://www.twitch.tv/monkeydrumma' target='_blank' rel='noreferrer'><img src={twitch} alt='twitch icon'/></a>
                 <div>
                     <h2>I'm MonkeyDrumma</h2>
-                    <p>I'm a streamer on Twitch! My streams mainly focus on playing <span>Minecraft</span> on my realm with many of my viewers, but I occaisionally play <span>Modern Warfare 3</span>, <span>Phasmophobia</span>, and other games like those. Check me out on twitch by clicking the image.</p>
+                    <p>I'm a streamer on Twitch! My streams mainly focus on playing <span>Minecraft</span> on my realm with many of my viewers, but I occaisionally play <span>Modern Warfare 3</span>, <span>Phasmophobia</span>, and other games like those.</p>
                     <a href='https://www.twitch.tv/monkeydrumma' target='_blank' rel='noreferrer'>Go to Twitch</a>
                 </div>
             </div>

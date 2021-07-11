@@ -8,8 +8,9 @@ let Home = () => {
     let [showModal, setShowModal] = useState(false);
     let [command, setCommand] = useState('');
     let [codeCopied, setCodeCopied] = useState(false);
+    let [itemsLoaded, setitemsLoaded] = useState('');
     let [search, setSearch] = useState('');
-    let [currentFilter, setCurrentFilter] = useState(1);
+    let [currentFilter, setCurrentFilter] = useState(0);
     const textAreaRef = useRef(null);
 
     let filters = ['', 'Price (Low to High)', 'Price (High to Low)', 'Name (A-Z)', 'Name (Z-A)']
@@ -60,8 +61,16 @@ let Home = () => {
             key: "1ZFa3jk0mz2SYAq4xCOPgFDL7ZJMb_ysG5fO-QwFedV8",
             simpleSheet: true
         })
-        .then((data) => setItems(data))
+        .then((data) => {
+            setitemsLoaded('loaded');
+            setTimeout(() => {
+                setItems(data);
+                setCurrentFilter(5);
+                setCurrentFilter(0);
+            }, 450)
+        })
         .catch((err) => console.warn(err));
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -81,6 +90,7 @@ let Home = () => {
         let changeFilter = index => {
             let sortedPrice;
             let sortedName;
+            let sortedOwner;
             switch(+index){
                 case 1: 
                     sortedPrice = [...items].sort((a,b) => a.price - b.price);
@@ -107,12 +117,16 @@ let Home = () => {
                     setItems(sortedName);
                     break
                 default :
-                    Tabletop.init({
-                        key: "1ZFa3jk0mz2SYAq4xCOPgFDL7ZJMb_ysG5fO-QwFedV8",
-                        simpleSheet: true
-                    })
-                    .then((data) => setItems(data))
-                    .catch((err) => console.warn(err));
+                    sortedOwner = [...items].sort(function(a, b){
+                        let ownerA = a.owner === 'none' ? '' : a.owner;
+                        let ownerB = b.owner === 'none' ? '' : b.owner;
+                        
+                        if(ownerA < ownerB) { return -1; }
+                        if(ownerA > ownerB) { return 1; }
+                        return 0;
+                    });
+                    setItems(sortedOwner);
+                    break
             }
         }
         changeFilter(currentFilter)
@@ -139,8 +153,8 @@ let Home = () => {
                     <img className='titleGem2'  src={gem} alt='gem' />
                 </h1>
                 <div className='links'>
-                    <Link to='/'>Home</Link>
-                    <Link to='/viewcollection'>View Collections</Link>
+                    <Link to='/'><i className="fas fa-home"></i>Home</Link>
+                    <Link to='/viewcollection'><i className="fas fa-shapes"></i>View Collections</Link>
                 </div>
             </nav>
             <div className='welcome'>
@@ -165,7 +179,7 @@ let Home = () => {
                 </div>
             </div>
             <div className='items-container'>
-                {items.length ? renderedItems : <h1>No Items to Display</h1>}
+                {items.length ? renderedItems : <div className='loading' id={itemsLoaded}><div>Loading . . .</div></div>}
             </div>
             <div className='legend'>
                 <h4 id='legendLabel'><i className="fas fa-chevron-right"></i></h4>
