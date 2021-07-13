@@ -18,6 +18,7 @@ let Home = () => {
                 <div className='links'>
                     <Link to='/shop'><i className="fas fa-store-alt"></i>Gem Shop</Link>
                     <Link to='/viewcollection'><i className="fas fa-shapes"></i>Collections</Link>
+                    <Link to='/skins'><i className="fas fa-cube"></i>Skins</Link>
                 </div>
             </nav>
             <div className='biglink'>

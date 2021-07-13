@@ -68,11 +68,11 @@ let ViewCollection = () => {
             </div>
         </nav>
         <div className='welcome noborder'>
-            <p>Enter your <span>twitch username</span> below to see your collection!</p>
+            <p>Enter your twitch username below to see your collection!</p>
         </div>
         <div className='searchContainer'>
             <div>
-                <span>Twitch Username:</span>
+                <span style={{minWidth: '150px'}}>Twitch Username:</span>
                 <input onChange={(e) => setSearch(e.target.value.toLowerCase())} placeholder='Search' onKeyDown={(e) => e.code === 'Enter' ? searchForOwner(search) : null}/>
             </div>
             <button onClick={() => searchForOwner(search)} >Search</button>
