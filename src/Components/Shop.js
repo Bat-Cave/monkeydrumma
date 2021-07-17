@@ -69,18 +69,6 @@ let Home = () => {
         
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    // useEffect(() => {
-    //     let searchedItems = [];
-    //     for(let j = 0; j < items.length; j++){
-    //         if(items[j].name.toLowerCase().includes(search)){
-    //             searchedItems.push(items[j]);
-    //         }
-    //     }
-    //     setItems(searchedItems)
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [search])
-
     
     useEffect(() => {
         let changeFilter = index => {
@@ -162,7 +150,8 @@ let Home = () => {
                 </h1>
                 <div className='links'>
                     <Link to='/'><i className="fas fa-home"></i>Home</Link>
-                    <Link to='/viewcollection'><i className="fas fa-shapes"></i>View Collections</Link>
+                    <Link to='/viewcollection'><i className="fas fa-shapes"></i>Collections</Link>
+                    <Link to='/skins'><i className="fas fa-cube"></i>Skins</Link>
                 </div>
             </nav>
             <div className='welcome'>
@@ -232,10 +221,7 @@ let Home = () => {
                                     setCodeCopied(false);
                                 }, 5000)
                             };
-                        }}>Copy Code</button>
-                        {codeCopied ? (
-                            <p id='code-copied'>Code Copied!</p>
-                        ) : null}
+                        }}>{codeCopied ? 'Code Copied!' : 'Copy Code'}</button>
                     </div>
                 </div>
             ) : null}

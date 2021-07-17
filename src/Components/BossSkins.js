@@ -43,6 +43,7 @@ let BossSkins = () => {
             <div className='links'>
                 <Link to='/'><i className="fas fa-home"></i>Home</Link>
                 <Link to='/shop'><i className="fas fa-store-alt"></i>Gem Shop</Link>
+                <Link to='/viewcollection'><i className="fas fa-shapes"></i>Collections</Link>
             </div>
         </nav>
         <div className='items-container'>

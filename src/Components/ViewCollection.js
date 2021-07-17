@@ -1,11 +1,16 @@
 import gem from '../images/diamond.png';
-import { useEffect, useState} from 'react';
+import { useEffect, useState, useRef} from 'react';
 import Tabletop from "tabletop";
 import {Link, withRouter} from 'react-router-dom';
 let ViewCollection = () => {
     let [items, setItems] = useState([]);
     let [searchedItems, setSearchedItems] = useState([]);
     let [search, setSearch] = useState('');
+    let [showModal, setShowModal] = useState(false);
+    let [command, setCommand] = useState('');
+    let [codeCopied, setCodeCopied] = useState(false);
+    let [options, setOptions] = useState([]);
+    const textAreaRef = useRef(null);
 
     useEffect(() => {
         Tabletop.init({
@@ -16,6 +21,18 @@ let ViewCollection = () => {
         .catch((err) => console.warn(err));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        let newOptions = [];
+        for(let o = 0; o < items.length; o++){
+            if(items[o].owner !== 'none'){
+                if(!newOptions.includes(items[o].owner)){
+                    newOptions.push(items[o].owner);
+                };
+            }
+        }
+        setOptions(newOptions);
+    }, [items])
 
 
     let searchForOwner = () => {
@@ -28,6 +45,13 @@ let ViewCollection = () => {
         setSearchedItems(ownersItems)
     }
 
+    let handleValueChange = (name) => {
+        setSearch(name);
+    }
+    useEffect(() => {
+        searchForOwner();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [search])
     
 
     let renderedItems = searchedItems.map((e, i) => {
@@ -44,13 +68,29 @@ let ViewCollection = () => {
                 <div>
                     <h3 className='owned'><span>Owned by</span> {e.owner}</h3>
                 </div>
+                <button onClick={() => displayHandler(e.name)} style={{fontSize: '12px'}}>Show on Stream</button>
             </div>
         )
     })
 
+    let ownerOptions = options.map((e, i) => {
+        return(
+            <option value={e} key={i}>{e}</option>
+        )   
+    })
 
+    let displayHandler = itemName => {
+        setCommand(`!display ${itemName.toLowerCase().split(' ').join('-')}`)
+        setShowModal(true);
+    }
 
-
+    function copyToClipboard(e) {
+        textAreaRef.current.select();
+        document.execCommand('copy');
+        // This is just personal preference.
+        // I prefer to not show the whole text area selected.
+        e.target.focus();
+    };
 
     return(
     <div className='home' id='collection'>
@@ -65,17 +105,20 @@ let ViewCollection = () => {
             <div className='links'>
                 <Link to='/'><i className="fas fa-home"></i>Home</Link>
                 <Link to='/shop'><i className="fas fa-store-alt"></i>Gem Shop</Link>
+                <Link to='/skins'><i className="fas fa-cube"></i>Skins</Link>
             </div>
         </nav>
         <div className='welcome noborder'>
-            <p>Enter your twitch username below to see your collection!</p>
+            <p><span>Select your twitch username</span> below to see your collection! If your twitch username doesn't show up as an option, head to the Gem Shop to get a collectable!</p>
         </div>
         <div className='searchContainer'>
             <div>
                 <span style={{minWidth: '150px'}}>Twitch Username:</span>
-                <input onChange={(e) => setSearch(e.target.value.toLowerCase())} placeholder='Search' onKeyDown={(e) => e.code === 'Enter' ? searchForOwner(search) : null}/>
+                <select onChange={(e) => handleValueChange(e.target.value.toLowerCase())}>
+                    <option value=''>Select</option>
+                    {ownerOptions}
+                </select>
             </div>
-            <button onClick={() => searchForOwner(search)} >Search</button>
         </div>
         <div className='items-container'>
             {searchedItems.length ? renderedItems : <h1>No Items to Display</h1>}
@@ -103,6 +146,30 @@ let ViewCollection = () => {
                 <img src='https://i.ibb.co/5cB9c2p/legendary.gif' alt='legendary'/>
             </div>
         </div>
+        {showModal ? (
+            <div className='modal-container' onClick={(e) => {
+                e.stopPropagation();
+                setShowModal(false);
+            }}>
+                <div className='modal' onClick={(e) => e.stopPropagation()}>
+                    <button id='close' onClick={(e) => {
+                        setShowModal(false);
+                    }}>X</button>
+                    <p>Type this command in the twitch chat:</p>
+                    <textarea id='command' ref={textAreaRef} defaultValue={command} readOnly autoFocus></textarea>
+                    <button onClick={(e) => {
+                        if(!codeCopied){
+                            e.stopPropagation();
+                            setCodeCopied(true);
+                            copyToClipboard(e);
+                            setTimeout(() => {
+                                setCodeCopied(false);
+                            }, 5000)
+                        };
+                    }}>{codeCopied ? 'Code Copied!' : 'Copy Code'}</button>
+                </div>
+            </div>
+        ) : null}
     </div>
     )
 }

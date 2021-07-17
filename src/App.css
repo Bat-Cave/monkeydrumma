@@ -153,8 +153,7 @@ a {
 }
 
 .welcome span {
-  color: #596f84;
-  text-shadow: 0 2px 3px #0c1122;
+  color: #ffffff;
 }
 
 .biglink {
@@ -199,8 +198,7 @@ a {
 }
 
 .biglink span {
-  text-shadow: 0 2px 3px #0c1122;
-  color: #596f84;
+  color: #ffffff;
 }
 
 .searchContainer {
@@ -487,17 +485,22 @@ button:hover {
 .modal p {
   width: 80%;
   text-align: center;
+  margin-top: 16px;
+  color: #ffffff;
 }
 
 .modal #command {
-  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 8px;
   margin: 8px;
   color: rgb(0, 189, 0);
   background: #333333;
   border: 2px solid black;
   margin: 8px;
   width: 70%;
-  height: 40px;
+  height: 30%;
   resize: none;
   font-size: 14px;
   overflow: hidden;
@@ -686,6 +689,10 @@ button:hover {
   }
   .links {
     width: 350px;
+  }
+  .links a{
+    height: 36px;
+    background-size: cover;
   }
   .welcome {
     width: 100%;
