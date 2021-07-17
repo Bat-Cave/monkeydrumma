@@ -98,7 +98,7 @@ let ViewCollection = () => {
             <h1>
                 <img className='titleGem3' src={gem} alt='gem' />
                 <img className='titleGem'  src={gem} alt='gem' />
-                Collection
+                Collections
                 <img className='titleGem4' src={gem} alt='gem' />
                 <img className='titleGem2'  src={gem} alt='gem' />
             </h1>
