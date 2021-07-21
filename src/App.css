@@ -283,6 +283,11 @@ input {
   text-shadow: 0px 2px 3px #523c66;
   margin: 4px 0;
   text-align: center;
+  height: 40px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .item button{
   position: absolute;
