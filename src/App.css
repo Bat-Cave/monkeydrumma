@@ -356,6 +356,10 @@ input {
   font-size: 24px;
 }
 
+#loadmore{
+  margin: 100px;
+}
+
 .legend {
   width: 250px;
   height: 250px;

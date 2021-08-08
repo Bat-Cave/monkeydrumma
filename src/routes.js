@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import Shop from './Components/Shop';
 import ViewCollection from './Components/ViewCollection';
 import BossSkins from './Components/BossSkins';
+import TwitchBotInfo from './Components/TwitchBotInfo';
 
 export default (
     <Switch>
@@ -12,5 +13,6 @@ export default (
         <Route path='/shop' component={Shop}/>
         <Route path='/viewcollection' component={ViewCollection}/>
         <Route path='/skins' component={BossSkins}/>
+        <Route path='/twitchbotinfo' component={TwitchBotInfo}/>
     </Switch>
 )

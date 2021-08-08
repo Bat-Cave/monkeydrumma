@@ -10,6 +10,7 @@ let Home = () => {
     let [codeCopied, setCodeCopied] = useState(false);
     // let [search, setSearch] = useState('');
     let [currentFilter, setCurrentFilter] = useState(0);
+    let [maxItemsToDisplay, setMaxItemsToDisplay] = useState(10);
     const textAreaRef = useRef(null);
 
     let filters = ['', 'Price (Low to High)', 'Price (High to Low)', 'Name (A-Z)', 'Name (Z-A)']
@@ -20,34 +21,39 @@ let Home = () => {
 
     let renderedItems = [].concat(items).map((e, i) => {
         let imageUrl = '';
-        if(e.rarity === 'common'){imageUrl = 'https://i.ibb.co/gD7S7TX/common.gif'};
-        if(e.rarity === 'uncommon'){imageUrl = 'https://i.ibb.co/TrYqTpS/uncommon.gif'};
-        if(e.rarity === 'rare'){imageUrl = 'https://i.ibb.co/bbjFVpH/rare.gif'};
-        if(e.rarity === 'epic'){imageUrl = 'https://i.ibb.co/ccvybtq/epic.gif'};
-        if(e.rarity === 'legendary'){imageUrl = 'https://i.ibb.co/5cB9c2p/legendary.gif'};
-        return(
-            <div className='item' key={i}>
-                {e.owner === 'none' ? (
-                    <h3>{e.name}</h3>
-                ) : (
-                    <h3><img className='rarity' src={imageUrl} alt={e.rarity}/>{e.name}<img className='rarity' src={imageUrl} alt={e.rarity}/></h3>
-                )}
-                <img className='item-image' src={e.url || gem} alt={e}/>
-                {e.owner === 'none' ? (
-                    <div>
-                        <div className='price'>
-                            <p>{e.price}</p>  
-                            <img src={gem} alt='gems'/> 
+        if(i < maxItemsToDisplay){
+            if(e.rarity === 'common'){imageUrl = 'https://i.ibb.co/gD7S7TX/common.gif'};
+            if(e.rarity === 'uncommon'){imageUrl = 'https://i.ibb.co/TrYqTpS/uncommon.gif'};
+            if(e.rarity === 'rare'){imageUrl = 'https://i.ibb.co/bbjFVpH/rare.gif'};
+            if(e.rarity === 'epic'){imageUrl = 'https://i.ibb.co/ccvybtq/epic.gif'};
+            if(e.rarity === 'legendary'){imageUrl = 'https://i.ibb.co/5cB9c2p/legendary.gif'};
+            return(
+                <div className='item' key={i}>
+                    {e.owner === 'none' ? (
+                        <h3>{e.name}</h3>
+                    ) : (
+                        <h3><img className='rarity' src={imageUrl} alt={e.rarity}/>{e.name}<img className='rarity' src={imageUrl} alt={e.rarity}/></h3>
+                    )}
+                    <img className='item-image' src={e.url || gem} alt={e}/>
+                    {e.owner === 'none' ? (
+                        <div>
+                            <div className='price'>
+                                <p>{e.price}</p>  
+                                <img src={gem} alt='gems'/> 
+                            </div>
+                            <button onClick={() => buyHandler(e.name)}>Buy</button>
                         </div>
-                        <button onClick={() => buyHandler(e.name)}>Buy</button>
-                    </div>
-                ) : (
-                    <div>
-                        <h3 className='owned'><span>Owned by</span> {e.owner}</h3>
-                    </div>
-                )}
-            </div>
-        )
+                    ) : (
+                        <div>
+                            <h3 className='owned'><span>Owned by</span> {e.owner}</h3>
+                        </div>
+                    )}
+                </div>
+            )
+        } else {
+            return null;
+        }
+        
     })
 
     let buyHandler = itemName => {
@@ -177,6 +183,7 @@ let Home = () => {
             </div>
             <div className='items-container'>
                 {items.length ? renderedItems : <div className='loading'><div>Loading . . .</div></div>}
+                <button id='loadmore' onClick={() => setMaxItemsToDisplay(maxItemsToDisplay + 10)}>Load More</button>
             </div>
             <div className='legend'>
                 <h4 id='legendLabel'><i className="fas fa-chevron-right"></i></h4>
