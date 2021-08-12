@@ -1,6 +1,6 @@
 import gem from '../images/diamond.png';
 import { useEffect, useState, useRef} from 'react';
-import Tabletop from "tabletop";
+import Papa from "papaparse";
 import {Link, withRouter} from 'react-router-dom';
 let Home = () => {
 
@@ -10,7 +10,7 @@ let Home = () => {
     let [codeCopied, setCodeCopied] = useState(false);
     // let [search, setSearch] = useState('');
     let [currentFilter, setCurrentFilter] = useState(0);
-    let [maxItemsToDisplay, setMaxItemsToDisplay] = useState(10);
+    let [maxItemsToDisplay, setMaxItemsToDisplay] = useState(30);
     const textAreaRef = useRef(null);
 
     let filters = ['', 'Price (Low to High)', 'Price (High to Low)', 'Name (A-Z)', 'Name (Z-A)']
@@ -61,17 +61,17 @@ let Home = () => {
         setShowModal(true);
     }
 
-    useEffect(() => {
-        Tabletop.init({
-            key: "1ZFa3jk0mz2SYAq4xCOPgFDL7ZJMb_ysG5fO-QwFedV8",
-            simpleSheet: true
+    useEffect(() => { 
+        Papa.parse('https://docs.google.com/spreadsheets/d/1ZFa3jk0mz2SYAq4xCOPgFDL7ZJMb_ysG5fO-QwFedV8/pub?output=csv', {
+            download: true,
+            header: true,
+            complete: function(results) {
+                var data = results.data
+                setItems(data)
+                setCurrentFilter(99);
+                setCurrentFilter(0);
+            }
         })
-        .then((data) => {
-            setItems(data);
-            setCurrentFilter(99);
-            setCurrentFilter(0);
-        })
-        .catch((err) => console.warn(err));
         
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -83,11 +83,11 @@ let Home = () => {
             let sortedOwner;
             switch(+index){
                 case 1: 
-                    sortedPrice = [...items].sort((a,b) => a.price - b.price);
+                    sortedPrice = [...items].sort((a,b) => +a.price - +b.price);
                     setItems(sortedPrice);
                     break
                 case 2:
-                    sortedPrice = [...items].sort((a,b) => b.price - a.price);
+                    sortedPrice = [...items].sort((a,b) => +b.price - +a.price);
                     setItems(sortedPrice);
                     break
                 case 3:
@@ -183,7 +183,7 @@ let Home = () => {
             </div>
             <div className='items-container'>
                 {items.length ? renderedItems : <div className='loading'><div>Loading . . .</div></div>}
-                <button id='loadmore' onClick={() => setMaxItemsToDisplay(maxItemsToDisplay + 10)}>Load More</button>
+                <button id='loadmore' onClick={() => setMaxItemsToDisplay(maxItemsToDisplay + 30)}>Load More</button>
             </div>
             <div className='legend'>
                 <h4 id='legendLabel'><i className="fas fa-chevron-right"></i></h4>
