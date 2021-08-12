@@ -1,6 +1,6 @@
 import gem from '../images/diamond.png';
 import { useEffect, useState, useRef} from 'react';
-import Tabletop from "tabletop";
+import Papa from "papaparse";
 import {Link, withRouter} from 'react-router-dom';
 let ViewCollection = () => {
     let [items, setItems] = useState([]);
@@ -13,12 +13,14 @@ let ViewCollection = () => {
     const textAreaRef = useRef(null);
 
     useEffect(() => {
-        Tabletop.init({
-            key: "1ZFa3jk0mz2SYAq4xCOPgFDL7ZJMb_ysG5fO-QwFedV8",
-            simpleSheet: true
+        Papa.parse('https://docs.google.com/spreadsheets/d/1ZFa3jk0mz2SYAq4xCOPgFDL7ZJMb_ysG5fO-QwFedV8/pub?output=csv', {
+            download: true,
+            header: true,
+            complete: function(results) {
+                var data = results.data
+                setItems(data)
+            }
         })
-        .then((data) => setItems(data))
-        .catch((err) => console.warn(err));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
