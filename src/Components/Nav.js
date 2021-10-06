@@ -32,23 +32,23 @@ let Home = () => {
         <div className="links">
           <Link to="/">
             <i className="fas fa-home"></i>
-            {windowDimensions.width < 595 ? "" : "Home"}
+            {windowDimensions?.width < 595 ? "" : "Home"}
           </Link>
           <Link to="/shop">
             <i className="fas fa-store-alt"></i>
-            {windowDimensions.width < 595 ? "" : "Shop"}
+            {windowDimensions?.width < 595 ? "" : "Shop"}
           </Link>
           <Link to="/viewcollection">
             <i className="fas fa-shapes"></i>
-            {windowDimensions.width < 595 ? "" : "Collections"}
+            {windowDimensions?.width < 595 ? "" : "Collections"}
           </Link>
           <Link to="/skins">
             <i className="fas fa-cube"></i>
-            {windowDimensions.width < 595 ? "" : "Skins"}
+            {windowDimensions?.width < 595 ? "" : "Skins"}
           </Link>
           <Link to="/soundalerts">
             <i className="fas fa-volume-up"></i>
-            {windowDimensions.width < 595 ? "" : "Sounds"}
+            {windowDimensions?.width < 595 ? "" : "Sounds"}
           </Link>
         </div>
       </nav>
