@@ -558,6 +558,7 @@ button:hover {
 }
 .skinInfo h4 {
   position: relative;
+  width: auto;
   background: linear-gradient(to right, #24243e, #141e30, #0f0c29);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
