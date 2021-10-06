@@ -620,5 +620,60 @@ module.exports = {
       url: "https://www.myinstants.com/media/sounds/steel_tv-what-are-you-aiming-at.mp3",
       commandName: "whatareyouaimingat",
     },
+    letsgo: {
+      title: "Let's Go",
+      url: "https://www.myinstants.com/media/sounds/vibez-lets-go.mp3",
+      commandName: "letsgo",
+    },
+    skulltrumpet: {
+      title: "Skull Trumpet",
+      url: "https://www.myinstants.com/media/sounds/skullsound2.mp3",
+      commandName: "skulltrumpet",
+    },
+    mlgpwnage: {
+      title: "MLG PWNAGE",
+      url: "https://www.myinstants.com/media/sounds/swaggityswagger.mp3",
+      commandName: "mlgpwnage",
+    },
+    ohyeah: {
+      title: "Oh Yeah",
+      url: "https://www.myinstants.com/media/sounds/01-oh-yeah.mp3",
+      commandName: "ohyeah",
+    },
+    failhorn: {
+      title: "Fail Horn",
+      url: "https://www.myinstants.com/media/sounds/thepriceisright-loserhorns.mp3",
+      commandName: "failhorn",
+    },
+    neinneinnein: {
+      title: "Nein Nein Nein",
+      url: "https://www.myinstants.com/media/sounds/hitler-nein_1.mp3",
+      commandName: "neinneinnein",
+    },
+    iwillalwaysloveyou: {
+      title: "I Will Always Love You",
+      url: "https://www.myinstants.com/media/sounds/i-will-always-love-you-low.mp3",
+      commandName: "iwillalwaysloveyou",
+    },
+    illuminati: {
+      title: "Illuminati",
+      url: "https://www.myinstants.com/media/sounds/damnson.mp3",
+      commandName: "illuminati",
+    },
+    yourenotthatguy: {
+      title: "You're Not That Guy",
+      url: "https://www.myinstants.com/media/sounds/youre-not-that-guy-full.mp3",
+      commandName: "yourenotthatguy",
+    },
+    canttouchthis: {
+      title: "Can't Touch This",
+      url: "https://www.myinstants.com/media/sounds/cantouchthis.mp3",
+      commandName: "canttouchthis",
+    },
+    shutupandtakemymoney: {
+      title: "Shut Up and Take My Money",
+      url: "https://www.myinstants.com/media/sounds/shut-up_2.mp3",
+      commandName: "shutupandtakemymoney",
+    },
   },
 };
