@@ -1,6 +1,5 @@
 import monkey from "../images/monke_banana_emote_cropped.png";
 import { Link, withRouter } from "react-router-dom";
-import { useEffect } from "react/cjs/react.development";
 let Home = () => {
   // const getWindowDimensions = () => {
   //   const { innerWidth: width, innerHeight: height } = window;
@@ -12,14 +11,14 @@ let Home = () => {
 
   // const [windowDimensions, setWindowDimensions] = useState();
 
-  useEffect(() => {
-    // setWindowDimensions(getWindowDimensions());
-    // const handleResize = () => {
-    //   setWindowDimensions(getWindowDimensions());
-    // };
-    // window.addEventListener("resize", handleResize);
-    // return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  // useEffect(() => {
+  // setWindowDimensions(getWindowDimensions());
+  // const handleResize = () => {
+  //   setWindowDimensions(getWindowDimensions());
+  // };
+  // window.addEventListener("resize", handleResize);
+  // return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
   return (
     <div className="home">
