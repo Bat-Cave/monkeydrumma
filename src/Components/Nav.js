@@ -1,24 +1,24 @@
 import monkey from "../images/monke_banana_emote_cropped.png";
 import { Link, withRouter } from "react-router-dom";
-import { useState, useEffect } from "react/cjs/react.development";
+import { useEffect } from "react/cjs/react.development";
 let Home = () => {
-  const getWindowDimensions = () => {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-      width,
-      height,
-    };
-  };
+  // const getWindowDimensions = () => {
+  //   const { innerWidth: width, innerHeight: height } = window;
+  //   return {
+  //     width,
+  //     height,
+  //   };
+  // };
 
-  const [windowDimensions, setWindowDimensions] = useState();
+  // const [windowDimensions, setWindowDimensions] = useState();
 
   useEffect(() => {
-    setWindowDimensions(getWindowDimensions());
-    const handleResize = () => {
-      setWindowDimensions(getWindowDimensions());
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    // setWindowDimensions(getWindowDimensions());
+    // const handleResize = () => {
+    //   setWindowDimensions(getWindowDimensions());
+    // };
+    // window.addEventListener("resize", handleResize);
+    // return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -32,23 +32,23 @@ let Home = () => {
         <div className="links">
           <Link to="/">
             <i className="fas fa-home"></i>
-            {windowDimensions?.width < 595 ? "" : "Home"}
+            {"Home"}
           </Link>
           <Link to="/shop">
             <i className="fas fa-store-alt"></i>
-            {windowDimensions?.width < 595 ? "" : "Shop"}
+            {"Shop"}
           </Link>
           <Link to="/viewcollection">
             <i className="fas fa-shapes"></i>
-            {windowDimensions?.width < 595 ? "" : "Collections"}
+            {"Collections"}
           </Link>
           <Link to="/skins">
             <i className="fas fa-cube"></i>
-            {windowDimensions?.width < 595 ? "" : "Skins"}
+            {"Skins"}
           </Link>
           <Link to="/soundalerts">
             <i className="fas fa-volume-up"></i>
-            {windowDimensions?.width < 595 ? "" : "Sounds"}
+            {"Sounds"}
           </Link>
         </div>
       </nav>
