@@ -171,7 +171,7 @@ let SoundAlerts = () => {
                 readOnly
                 autoFocus
               ></textarea>
-              <svg class="smile" version="1.1">
+              <svg className="smile" version="1.1">
                 <g>
                   <path d="M7 11a1 1 0 100-2 1 1 0 000 2zM14 10a1 1 0 11-2 0 1 1 0 012 0zM10 14a2 2 0 002-2H8a2 2 0 002 2z"></path>
                   <path
