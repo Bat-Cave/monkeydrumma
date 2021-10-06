@@ -1,6 +1,6 @@
 import monkey from "../images/monke_banana_emote_cropped.png";
 import { Link, withRouter } from "react-router-dom";
-let Home = () => {
+let Nav = () => {
   // const getWindowDimensions = () => {
   //   const { innerWidth: width, innerHeight: height } = window;
   //   return {
@@ -55,4 +55,4 @@ let Home = () => {
   );
 };
 
-export default withRouter(Home);
+export default withRouter(Nav);
