@@ -368,7 +368,7 @@ module.exports = {
     dogofwisdom: {
       title: "Dog of Wisdom",
       url: "https://www.myinstants.com/media/sounds/dog-of-wisdom-12.mp3",
-      commandName: "dogofwinsdom",
+      commandName: "dogofwisdom",
     },
     iwanttobemonkey: {
       title: "I Want To Be Monkey",
@@ -493,7 +493,7 @@ module.exports = {
     underthewater: {
       title: "Under the Water",
       url: "https://www.myinstants.com/media/sounds/y2mate_HOnnyD0.mp3",
-      commandName: "udnerthewater",
+      commandName: "underthewater",
     },
     damedane: {
       title: "Dame Da Ne",
