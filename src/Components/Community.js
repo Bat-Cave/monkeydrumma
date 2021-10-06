@@ -1,6 +1,6 @@
 import { withRouter } from "react-router-dom";
 
-let BossSkins = () => {
+let Community = () => {
   let members = [
     {
       name: "Maya",
@@ -40,4 +40,4 @@ let BossSkins = () => {
   );
 };
 
-export default withRouter(BossSkins);
+export default withRouter(Community);
