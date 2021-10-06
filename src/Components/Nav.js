@@ -10,11 +10,10 @@ let Home = () => {
     };
   };
 
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  );
+  const [windowDimensions, setWindowDimensions] = useState();
 
   useEffect(() => {
+    setWindowDimensions(getWindowDimensions());
     const handleResize = () => {
       setWindowDimensions(getWindowDimensions());
     };
