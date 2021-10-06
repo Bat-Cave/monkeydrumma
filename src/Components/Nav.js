@@ -1,6 +1,6 @@
 import monkey from "../images/monke_banana_emote_cropped.png";
 import { Link, withRouter } from "react-router-dom";
-import { useState, useEffect } from "react/cjs/react.development";
+import { useState, useEffect } from "react";
 let Nav = () => {
   useEffect(() => {
     const handleResize = () => {

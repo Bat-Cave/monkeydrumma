@@ -1,5 +1,5 @@
 import { withRouter } from "react-router-dom";
-import { useEffect, useState, useRef } from "react/cjs/react.development";
+import { useEffect, useState, useRef } from "react";
 import s from "../sounds";
 import "../styles/soundAlerts.css";
 import banana from "../images/banana.png";
