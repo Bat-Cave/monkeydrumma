@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
-@import url('https://fonts.googleapis.com/css?family=Pirata+One|Rubik:900');
+@import url("https://fonts.googleapis.com/css?family=Pirata+One|Rubik:900");
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -55,7 +55,6 @@ nav h1 {
   background: url(../src/images/itemframe2wide.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  image-rendering: pixelated;
   width: 600px;
   height: 60px;
   display: flex;
@@ -70,27 +69,17 @@ nav h1 {
   padding: 0 16px;
 }
 
-.titleGem {
+.titleGem1 {
   width: 50px;
   z-index: 1000;
-  transform: rotate(-5deg);
+  transform: rotate(0deg);
   margin-right: 8px;
 }
-.titleGem4 {
-  width: 50px;
-  z-index: 1000;
-  transform: rotate(5deg);
-  margin-left: 8px;
-}
 .titleGem2 {
-  width: 40px;
-  transform: rotate(15deg) translate(-22px, 8px);
+  width: 50px;
+  transform: rotate(0deg);
   z-index: 1;
-}
-.titleGem3 {
-  width: 40px;
-  transform: rotate(-15deg) translate(22px, 8px);
-  z-index: 1;
+  margin-left: 8px;
 }
 
 .links {
@@ -111,11 +100,13 @@ a {
   background-size: contain;
   background-repeat: no-repeat;
   height: 50px;
-  width: 164px;
+  width: 124px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
+  font-size: 12px;
+  padding-bottom: 13px;
 }
 
 .welcome {
@@ -289,14 +280,14 @@ input {
   justify-content: center;
   align-items: center;
 }
-.item button{
+.item button {
   position: absolute;
   bottom: -24px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 .item button:hover {
-  transform:  translate(-50%, calc(-50% - 4px));
+  transform: translate(-50%, calc(-50% - 4px));
 }
 
 .item-image {
@@ -356,7 +347,7 @@ input {
   font-size: 24px;
 }
 
-#loadmore{
+#loadmore {
   margin: 100px 200px;
 }
 
@@ -425,7 +416,6 @@ input {
   height: 39px;
 }
 
-
 button {
   background: url(../src/images/button.png);
   image-rendering: pixelated;
@@ -441,7 +431,7 @@ button {
   cursor: pointer;
   transition: all 0.25s ease;
   padding-bottom: 4px;
-  color: white;;
+  color: white;
 }
 
 button:hover {
@@ -572,7 +562,7 @@ button:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-transform: Uppercase;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   border-bottom: 2px solid #24243e;
   padding: 4px;
 }
@@ -597,7 +587,7 @@ button:hover {
   mix-blend-mode: multiply;
 }
 
-.skinInfo .plaque{
+.skinInfo .plaque {
   background: url(../src/images/plaquebackground.png);
   image-rendering: auto;
   background-size: cover;
@@ -609,19 +599,18 @@ button:hover {
   justify-content: space-evenly;
   align-items: center;
   text-transform: Uppercase;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
-.skinInfo h6{
+.skinInfo h6 {
   width: 80%;
   word-wrap: break-word;
   text-align: justify;
   color: black;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
 }
-.skinInfo a{
-  transform: scale(.9);
+.skinInfo a {
+  transform: scale(0.9);
 }
-
 
 @keyframes fade-in {
   0% {
@@ -697,11 +686,23 @@ button:hover {
     align-items: center;
   }
   .links {
-    width: 350px;
+    width: 320px;
   }
-  .links a{
+  .links i {
+    margin: 0;
+    color: white;
+  }
+  .links a {
     height: 36px;
     background-size: cover;
+    padding: 0 0 2px 0;
+    background: #42305f;
+    margin: 0 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #1d001d;
+    border-radius: 8px;
   }
   .welcome {
     width: 100%;

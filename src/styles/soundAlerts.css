@@ -1,0 +1,143 @@
+.soundAlerts {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.sound {
+  width: 250px;
+  background: #ead4aa;
+  padding: 8px;
+  border: 5px solid black;
+  border-radius: 15px;
+  margin: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.soundInfo {
+  width: calc(100% - 48px);
+  height: auto;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.soundInfo p {
+  margin: 0;
+  font-family: Inter, Roobert, "Helvetica Neue", Helvetica, Arial;
+  font-size: 12px;
+  text-decoration: underline;
+  text-shadow: 1px 1px black;
+}
+
+.soundInfo h3 {
+  color: black;
+  font-family: Inter, Roobert, "Helvetica Neue", Helvetica, Arial;
+  font-size: 16px;
+  text-shadow: none;
+}
+
+.sound button {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: all 0.125s ease;
+}
+
+.soundButton {
+  background: rebeccapurple;
+  box-shadow: 0 3px rgb(51, 22, 80);
+}
+
+.soundButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px rgb(51, 22, 80);
+}
+.soundButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px rgb(51, 22, 80);
+}
+
+.sound button i {
+  color: white;
+}
+
+.sa-modal .modal {
+  background: #18181b;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.sa-modal .modal #close {
+  top: 16px;
+  right: 16px;
+}
+.sa-modal .modal p {
+  margin: 4px 4px 4px 16px;
+  text-align: left;
+  width: auto;
+}
+
+.sa-modal .channelReward {
+  background: #18181b;
+  margin-top: 16px;
+}
+
+.sa-modal .rewardDetails {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sa-modal .rewardLogo {
+  width: 24px;
+  height: 24px;
+  background: #00c7ac;
+  border-radius: 5px;
+}
+
+.sa-modal .rewardTitle {
+  font-family: Inter, Roobert, "Helvetica Neue", Helvetica, Arial;
+  margin: 0;
+  font-weight: 600;
+}
+
+.sa-modal .banana {
+  width: 24px;
+  height: 24px;
+  image-rendering: auto;
+}
+
+.sa-modal .modal #command {
+  background: #464649;
+  border-radius: 6px;
+  text-align: left;
+  font-family: Inter, Roobert, "Helvetica Neue", Helvetica, Arial;
+  color: white;
+  font-weight: 400;
+  width: 280px;
+  height: 130px;
+  border: none;
+  margin: 8px 0;
+  padding: 8px;
+}
+.sa-modal .smile {
+  fill: #efeff1;
+  position: absolute;
+  right: 4px;
+  bottom: 26px;
+  width: 40px;
+  height: 40px;
+}
