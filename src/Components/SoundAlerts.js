@@ -5,7 +5,7 @@ import "../styles/soundAlerts.css";
 import banana from "../images/banana.png";
 
 let SoundAlerts = () => {
-  let [sounds, setSounds] = useState({});
+  let [sounds, setSounds] = useState([]);
   let [soundKeys, setSoundKeys] = useState([]);
   let [currSoundUrl, setCurrSoundUrl] = useState("");
   let [currSoundId, setCurrSoundId] = useState("");
@@ -16,12 +16,13 @@ let SoundAlerts = () => {
   let [showModal, setShowModal] = useState(false);
   let [command, setCommand] = useState("");
   let [codeCopied, setCodeCopied] = useState(false);
+  let [currentFilter, setCurrentFilter] = useState(0);
+  let [search, setSearch] = useState("");
   const textAreaRef = useRef(null);
 
   let playSound = async (link) => {
     currAudio.src = currSoundUrl;
     currAudio.type = "audio/mp3";
-    console.log(currSoundId);
 
     try {
       await currAudio.play();
@@ -67,8 +68,6 @@ let SoundAlerts = () => {
       soundObjInfo.commandName = soundObjInfo.commandName.toLowerCase();
       newObj[keys[i].toLowerCase()] = soundObjInfo;
     }
-
-    console.log(newObj);
   };
 
   useEffect(() => {
@@ -78,16 +77,152 @@ let SoundAlerts = () => {
   }, []);
 
   useEffect(() => {
+    setSearch("");
+    let changeFilter = (index) => {
+      switch (+index) {
+        case 1:
+          let memes = Object.keys(s.sounds).reduce(function (r, e) {
+            if (s.sounds[e].tags.includes("memes")) r[e] = s.sounds[e];
+            return r;
+          }, {});
+
+          setSounds(memes);
+          setSoundKeys(Object.keys(memes));
+          break;
+        case 2:
+          let anime = Object.keys(s.sounds).reduce(function (r, e) {
+            if (s.sounds[e].tags.includes("anime")) r[e] = s.sounds[e];
+            return r;
+          }, {});
+
+          setSounds(anime);
+          setSoundKeys(Object.keys(anime));
+          break;
+        case 3:
+          let soundEffect = Object.keys(s.sounds).reduce(function (r, e) {
+            if (s.sounds[e].tags.includes("sound effect")) r[e] = s.sounds[e];
+            return r;
+          }, {});
+
+          setSounds(soundEffect);
+          setSoundKeys(Object.keys(soundEffect));
+          break;
+        case 4:
+          let music = Object.keys(s.sounds).reduce(function (r, e) {
+            if (s.sounds[e].tags.includes("music")) r[e] = s.sounds[e];
+            return r;
+          }, {});
+
+          setSounds(music);
+          setSoundKeys(Object.keys(music));
+          break;
+        case 5:
+          let movie = Object.keys(s.sounds).reduce(function (r, e) {
+            if (s.sounds[e].tags.includes("movie")) r[e] = s.sounds[e];
+            return r;
+          }, {});
+
+          setSounds(movie);
+          setSoundKeys(Object.keys(movie));
+          break;
+        case 6:
+          let videoGame = Object.keys(s.sounds).reduce(function (r, e) {
+            if (s.sounds[e].tags.includes("video game")) r[e] = s.sounds[e];
+            return r;
+          }, {});
+
+          setSounds(videoGame);
+          setSoundKeys(Object.keys(videoGame));
+          break;
+        default:
+          setSounds(s.sounds);
+          setSoundKeys(Object.keys(s.sounds));
+          break;
+      }
+    };
+    changeFilter(currentFilter);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentFilter]);
+
+  useEffect(() => {
+    let searchSounds = (title) => {
+      let searchResult = Object.keys(s.sounds).reduce(function (r, e) {
+        if (s.sounds[e].title.toLowerCase().includes(title.toLowerCase()))
+          r[e] = s.sounds[e];
+        return r;
+      }, {});
+
+      setSounds(searchResult);
+      setSoundKeys(Object.keys(searchResult));
+    };
+
+    if (search !== "") {
+      searchSounds(search);
+    } else {
+      setSounds(s.sounds);
+      setSoundKeys(Object.keys(s.sounds));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search]);
+
+  useEffect(() => {
     currSoundUrl && playSound(currSoundUrl);
     // eslint-disable-next-line
   }, [currSoundUrl]);
 
   return (
     <div className="home">
-      <div className="welcome noborder">
+      <div className="welcome nowhiteborder">
         <p>
           <span>Choose a Sound Alert Below to play on stream!</span>
         </p>
+      </div>
+      <div className="soundFilter">
+        <div>
+          <h3>Search</h3>
+          <input value={search} onChange={(e) => setSearch(e.target.value)} />
+        </div>
+        <div>
+          <h3>Filters</h3>
+          <div>
+            <button onClick={() => setCurrentFilter(1)} className="memes">
+              Memes
+            </button>
+            <button onClick={() => setCurrentFilter(2)} className="anime">
+              Anime
+            </button>
+            <button onClick={() => setCurrentFilter(3)} className="soundeffect">
+              Sound Effect
+            </button>
+            <button onClick={() => setCurrentFilter(4)} className="music">
+              Music
+            </button>
+            <button onClick={() => setCurrentFilter(5)} className="movie">
+              Movie
+            </button>
+            <button onClick={() => setCurrentFilter(6)} className="videogame">
+              Video Game
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        style={{
+          width: "100%",
+          display: `flex`,
+          justifyContent: "center",
+          transition: "all .25s ease",
+          margin: "8px",
+          overflow: "hidden",
+          animation: `${
+            currentFilter !== 0 ? "fade-in .5s ease" : "fade-out .5s ease"
+          }`,
+          height: `${currentFilter !== 0 ? "32px" : "0"}`,
+        }}
+      >
+        <button onClick={() => setCurrentFilter(0)} className="clear">
+          Clear Filters
+        </button>
       </div>
       <div className="soundAlerts">
         {soundKeys.map((s, i) => (
@@ -98,31 +233,43 @@ let SoundAlerts = () => {
           >
             <div className="soundInfo">
               <h3>{sounds[s].title}</h3>
-              <p className="link">play on stream</p>
+              {currSoundId === `sound-${i}` ? (
+                <button
+                  className="soundButton"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePause(`sound-${i}`, sounds[s].url);
+                  }}
+                  id={`sound-${i}`}
+                >
+                  <i className="fas fa-pause"></i>
+                </button>
+              ) : (
+                <button
+                  className="soundButton"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePlay(`sound-${i}`, sounds[s].url);
+                  }}
+                  id={`sound-${i}`}
+                >
+                  <i className="fas fa-play"></i>
+                </button>
+              )}
             </div>
-            {currSoundId === `sound-${i}` ? (
-              <button
-                className="soundButton"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handlePause(`sound-${i}`, sounds[s].url);
-                }}
-                id={`sound-${i}`}
-              >
-                <i className="fas fa-pause"></i>
-              </button>
-            ) : (
-              <button
-                className="soundButton"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handlePlay(`sound-${i}`, sounds[s].url);
-                }}
-                id={`sound-${i}`}
-              >
-                <i className="fas fa-play"></i>
-              </button>
-            )}
+            <div className="soundTags">
+              {sounds[s].tags.map((t, i) => {
+                return (
+                  <span
+                    key={`tag-${i}`}
+                    className={`tag ${t.split(" ").join("")}`}
+                  >
+                    {t}
+                  </span>
+                );
+              })}
+            </div>
+            <p className="link">play on stream</p>
           </div>
         ))}
       </div>

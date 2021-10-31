@@ -10,6 +10,7 @@ let Home = () => {
           href="https://www.twitch.tv/monkeydrumma"
           target="_blank"
           rel="noreferrer"
+          className="noButtonEffect"
         >
           <img src={twitch} alt="twitch icon" />
         </a>
@@ -35,6 +36,7 @@ let Home = () => {
           href="https://www.monkeydrumma.com/shop"
           target="_blank"
           rel="noreferrer"
+          className="noButtonEffect"
         >
           <img src={gem} alt="gem icon" />
         </a>
@@ -54,6 +56,7 @@ let Home = () => {
           href="https://www.monkeydrumma.com/shop"
           target="_blank"
           rel="noreferrer"
+          className="noButtonEffect"
         >
           <img src={discord} alt="gem icon" />
         </a>

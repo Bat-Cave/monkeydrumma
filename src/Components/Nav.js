@@ -1,7 +1,9 @@
-import monkey from "../images/monke_banana_emote_cropped.png";
 import { Link, withRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 let Nav = () => {
+  let path = typeof window !== "undefined" ? document.location.pathname : null;
+
   useEffect(() => {
     const handleResize = () => {
       setWindowDimensions(getWindowDimensions());
@@ -22,35 +24,50 @@ let Nav = () => {
     getWindowDimensions()
   );
 
+  const links = [
+    {
+      to: "/",
+      iconClass: "fas fa-home",
+      text: "Home",
+    },
+    {
+      to: "/shop",
+      iconClass: "fas fa-store-alt",
+      text: "Shop",
+    },
+    {
+      to: "/viewcollection",
+      iconClass: "fas fa-shapes",
+      text: "Collections",
+    },
+    {
+      to: "/skins",
+      iconClass: "fas fa-cube",
+      text: "Skins",
+    },
+    {
+      to: "/soundalerts",
+      iconClass: "fas fa-volume-up",
+      text: "Sounds",
+    },
+  ];
+
   return (
     <div className="home">
       <nav>
-        <h1>
-          <img className="titleGem1" src={monkey} alt="gem" />
-          MonkeyDrumma
-          <img className="titleGem2" src={monkey} alt="gem" />
-        </h1>
         <div className="links">
-          <Link to="/">
-            <i className="fas fa-home"></i>
-            {windowDimensions.width < 595 ? "" : "Home"}
-          </Link>
-          <Link to="/shop">
-            <i className="fas fa-store-alt"></i>
-            {windowDimensions.width < 595 ? "" : "Shop"}
-          </Link>
-          <Link to="/viewcollection">
-            <i className="fas fa-shapes"></i>
-            {windowDimensions.width < 595 ? "" : "Collections"}
-          </Link>
-          <Link to="/skins">
-            <i className="fas fa-cube"></i>
-            {windowDimensions.width < 595 ? "" : "Skins"}
-          </Link>
-          <Link to="/soundalerts">
-            <i className="fas fa-volume-up"></i>
-            {windowDimensions.width < 595 ? "" : "Sounds"}
-          </Link>
+          {links.map((l, i) => {
+            return (
+              <Link
+                key={`link-${i}`}
+                to={l.to}
+                id={`${path === l.to ? "active" : ""}`}
+              >
+                <i className={l.iconClass}></i>
+                {windowDimensions.width < 595 ? "" : l.text}
+              </Link>
+            );
+          })}
         </div>
       </nav>
     </div>

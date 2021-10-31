@@ -6,6 +6,7 @@ import ViewCollection from "./Components/ViewCollection";
 import BossSkins from "./Components/BossSkins";
 import TwitchBotInfo from "./Components/TwitchBotInfo";
 import SoundAlerts from "./Components/SoundAlerts";
+import Merch from "./Components/Merch";
 
 export default (
   <Switch>
@@ -16,5 +17,6 @@ export default (
     <Route path="/skins" component={BossSkins} />
     <Route path="/twitchbotinfo" component={TwitchBotInfo} />
     <Route path="/soundalerts" component={SoundAlerts} />
+    <Route path="/merch" component={Merch} />
   </Switch>
 );

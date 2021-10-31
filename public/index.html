@@ -26,10 +26,18 @@
       gtag('js', new Date());
     
       gtag('config', 'G-4HRFYL752F');
+      
     </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+    </div>
+    <script src="particles.js"></script>
   </body>
+  <script>
+    particlesJS.load('particles-js', './particles.json', function() {
+      console.log('callback - particles.js config loaded');
+    });
+  </script>
 </html>

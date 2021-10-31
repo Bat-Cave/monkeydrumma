@@ -4,7 +4,7 @@ import Nav from "./Components/Nav";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id="particles-js">
       <Nav />
       {routes}
     </div>

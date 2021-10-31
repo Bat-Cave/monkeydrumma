@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Pirata+One|Rubik:900");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap");
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -25,7 +26,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Righteous", cursive;
-  color: #0c1122;
 }
 
 body {
@@ -34,11 +34,27 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #333333;
-  background: url(../src/images/Background.png);
+  background: linear-gradient(to bottom, #062726, #102b3f);
   background-size: contain;
   overflow-x: hidden;
   text-shadow: 0px 2px 3px #523c66;
+  position: relative;
+}
+
+p {
+  color: #06d6a0;
+  text-shadow: 1px 2px 2px #062726;
+}
+
+h3 {
+  color: #062726;
+  text-shadow: 1px 2px 2px #06d6a0;
+}
+
+input,
+select {
+  border-radius: 15px;
+  padding: 0 12px;
 }
 
 nav {
@@ -52,7 +68,6 @@ nav {
 }
 
 nav h1 {
-  background: url(../src/images/itemframe2wide.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 600px;
@@ -63,6 +78,21 @@ nav h1 {
   color: white;
   font-size: 2em;
   transition: all 0.25s ease;
+}
+
+.particles-js {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.particles-js-canvas-el {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 
 .home {
@@ -93,20 +123,43 @@ nav h1 {
   margin-right: 6px;
 }
 
-a {
-  text-decoration: none;
-  background: url(../src/images/button.png);
-  image-rendering: pixelated;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 50px;
-  width: 124px;
+a,
+button {
+  min-width: 100px;
+  min-height: 32px;
+  border: none;
+  border-radius: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 14px;
+  padding: 0 16px;
+  transition: all 0.125s ease;
+  text-decoration: none;
   color: white;
-  font-size: 12px;
-  padding-bottom: 13px;
+  background: #6247aa;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+a:hover,
+button:hover {
+  background: #a06cd5;
+  transform: translateY(-3px);
+}
+a:active,
+button:active {
+  background: #a06cd5;
+  transform: translateY(-1px);
+}
+
+#active {
+  background: #a06cd5;
+}
+
+a i,
+button i {
+  color: white;
 }
 
 .welcome {
@@ -114,10 +167,22 @@ a {
   max-width: 800px;
   height: auto;
   padding: 16px 64px;
-  margin: 0px auto;
-  border: 5px solid black;
+  margin: 8px auto;
   border-radius: 15px;
-  background: #ead4aa;
+  background: rgba(226, 207, 234, 0.5);
+  position: relative;
+}
+
+.welcome:after {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  background: linear-gradient(to bottom, #6247aa, #ef476f);
+  content: "";
+  z-index: -1;
+  border-radius: 16px;
 }
 
 .welcome h3 {
@@ -126,21 +191,7 @@ a {
 }
 .welcome p {
   width: 100%;
-  border-bottom: 2px solid white;
   padding: 32px;
-}
-
-.noborder {
-  width: 100%;
-  padding: 16px;
-  border-bottom: none;
-  text-align: center;
-}
-
-.noborder p {
-  width: 100%;
-  padding: 16px;
-  border-bottom: none;
 }
 
 .welcome span {
@@ -154,13 +205,25 @@ a {
   height: auto;
   padding: 16px;
   margin: 0px auto;
-  border: 5px solid black;
   border-radius: 15px;
-  background: #ead4aa;
+  background: rgba(226, 207, 234, 0.5);
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 64px;
+  position: relative;
+}
+
+.biglink:after {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  background: linear-gradient(to bottom, #6247aa, rgba(239, 71, 110, 0.74));
+  content: "";
+  z-index: -1;
+  border-radius: 16px;
 }
 
 .biglink img {
@@ -186,6 +249,19 @@ a {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  box-shadow: none;
+}
+
+.biglink > a:hover {
+  background: transparent;
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+.biglink > a:active {
+  background: transparent;
+  transform: translateY(0px);
+  box-shadow: none;
 }
 
 .biglink span {
@@ -242,10 +318,8 @@ input {
 }
 
 .item {
-  background: url(../src/images/itemframe.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: transparent;
+  background: #fcfcfc80;
+  border-radius: 16px;
   image-rendering: pixelated;
   position: relative;
   width: 200px;
@@ -256,22 +330,26 @@ input {
   align-items: center;
   margin: 16px 32px;
   transition: all 0.25s ease;
+  position: relative;
+}
+
+.item:after {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  background: linear-gradient(to bottom, #6247aa, #ef476f);
+  content: "";
+  z-index: -1;
+  border-radius: 16px;
 }
 
 /* .item * {
   transition: all 0.25s ease;
 } */
 
-.item:hover {
-  transform: scale(1.2);
-}
-
-.item:hover .rarity {
-  transform: scale(1) rotate(90deg);
-}
-
 .item h3 {
-  text-shadow: 0px 2px 3px #523c66;
   margin: 4px 0;
   text-align: center;
   height: 40px;
@@ -279,10 +357,12 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #26547c;
+  text-shadow: 1px 2px 2px #06d6a0;
 }
 .item button {
   position: absolute;
-  bottom: -24px;
+  bottom: -30px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -311,6 +391,7 @@ input {
   width: 16px;
   height: 16px;
   margin: 0 8px;
+  image-rendering: auto;
 }
 
 .rarity {
@@ -334,7 +415,6 @@ input {
   animation: fade-in 0.5s ease;
 }
 .loading div {
-  background: url(../src/images/itemframe.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-color: transparent;
@@ -354,7 +434,6 @@ input {
 .legend {
   width: 250px;
   height: 250px;
-  background: url(../src/images/itemframe.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-color: transparent;
@@ -416,28 +495,6 @@ input {
   height: 39px;
 }
 
-button {
-  background: url(../src/images/button.png);
-  image-rendering: pixelated;
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 100px;
-  height: 30px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  padding-bottom: 4px;
-  color: white;
-}
-
-button:hover {
-  transform: translateY(-2px);
-}
-
 .owned {
   width: 100%;
   height: auto;
@@ -467,7 +524,6 @@ button:hover {
   animation: fade-in 0.25s ease-in;
 }
 .modal {
-  background: url(../src/images/itemframe2.png);
   image-rendering: pixelated;
   background-size: contain;
   background-repeat: no-repeat;
@@ -509,7 +565,6 @@ button:hover {
 }
 
 #close {
-  background: url(../src/images/buttonsmall.png);
   width: 30px;
   height: 30px;
   image-rendering: pixelated;
@@ -545,9 +600,8 @@ button:hover {
   height: 230px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  background: url(../src/images/itemframe.png);
   image-rendering: pixelated;
   background-size: cover;
   background-repeat: no-repeat;
@@ -679,6 +733,37 @@ button:hover {
     align-items: center;
     font-size: 18px;
   }
+
+  a,
+  button {
+    min-width: 30px;
+    min-height: 32px;
+    border: none;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    padding: 0 16px;
+    transition: all 0.125s ease;
+    text-decoration: none;
+    color: white;
+    background: #6247aa;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+
+  a:hover,
+  button:hover {
+    background: #a06cd5;
+    transform: translateY(-3px);
+  }
+  a:active,
+  button:active {
+    background: #a06cd5;
+    transform: translateY(-1px);
+  }
+
   .home {
     padding: 0;
     display: flex;
@@ -693,18 +778,7 @@ button:hover {
     margin: 0;
     color: white;
   }
-  .links a {
-    height: 36px;
-    background-size: cover;
-    padding: 0 0 2px 0;
-    background: #42305f;
-    margin: 0 2px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #1d001d;
-    border-radius: 8px;
-  }
+
   .welcome {
     width: 100%;
     margin: 16px 0;
@@ -713,7 +787,9 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: rgba(226, 207, 234, 0.5);
   }
+
   .welcome h3 {
     text-align: center;
     width: 300px;
@@ -740,9 +816,11 @@ button:hover {
     height: 300px;
   }
   .item h3 {
+    color: #26547c;
     text-shadow: 0px 2px 3px #523c66;
     margin: 8px 0;
     font-size: 24px;
+    font-family: "Montserrat", sans-serif;
   }
   .item p {
     font-size: 22px;
