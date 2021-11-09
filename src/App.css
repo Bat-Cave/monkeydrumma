@@ -164,13 +164,19 @@ button i {
 
 .welcome {
   width: 100%;
-  max-width: 800px;
+  max-width: 768px;
   height: auto;
-  padding: 16px 64px;
   margin: 8px auto;
+  padding: 16px;
   border-radius: 15px;
   background: rgba(226, 207, 234, 0.5);
   position: relative;
+}
+
+@media (max-width: 600px) {
+  .welcome {
+    max-width: 375px;
+  }
 }
 
 .welcome:after {
@@ -212,6 +218,10 @@ button i {
   justify-content: space-between;
   margin-bottom: 64px;
   position: relative;
+}
+
+.biglink:first-of-type {
+  margin-top: 32px;
 }
 
 .biglink:after {
@@ -403,32 +413,55 @@ input {
 }
 
 .loading {
-  background-color: rgba(102, 102, 102, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  animation: fade-in 0.5s ease;
+  justify-content: center;
+  transition: all 0.5s ease;
 }
 .loading div {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  image-rendering: pixelated;
   width: 250px;
-  height: 250px;
+  height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
 }
 
+.loader {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.loader span {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(to bottom, #6247aa, #ef476f);
+  margin: 0 2px;
+  border-radius: 8px;
+  animation: up-down 0.5s ease-in-out alternate infinite;
+}
+
+.loader span:nth-child(1) {
+  animation-delay: 0;
+}
+
+.loader span:nth-child(2) {
+  animation-delay: 250ms;
+}
+.loader span:nth-child(3) {
+  animation-delay: 500ms;
+}
+
 #loadmore {
   margin: 100px 200px;
+  max-height: 32px;
 }
 
 .legend {
@@ -510,38 +543,108 @@ input {
 }
 
 .modal-container {
-  background: rgba(102, 102, 102, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  top: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: fade-in 0.25s ease-in;
+  transition: all 0.5s ease;
+  z-index: 11111;
 }
+
 .modal {
-  image-rendering: pixelated;
-  background-size: contain;
-  background-repeat: no-repeat;
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   animation: slide-down 0.25s ease;
+  background: #18181b;
+  border-radius: 16px;
+  margin-top: 132px;
+}
+
+@media (max-width: 600px) {
+  .modal {
+    margin-top: 210px;
+  }
+}
+
+.modal:after {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  background: linear-gradient(to bottom, #6247aa, #ef476f);
+  content: "";
+  z-index: -1;
+  border-radius: 16px;
+}
+
+.chatWrapper {
+  border-radius: 16px;
+  padding: 16px 0 12px;
+}
+
+.playerWrapper {
+  width: 358px;
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+  margin: 24px auto;
+  position: sticky;
+  top: 20px;
+  z-index: 1111;
+}
+
+.player {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+
+.player iframe {
+  border-radius: 8px;
+}
+
+.playerWrapper:after {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  background: linear-gradient(to bottom, #6247aa, #ef476f);
+  content: "";
+  z-index: -1;
+  border-radius: 16px;
 }
 
 .modal p {
-  width: 80%;
+  width: 100%;
+  height: 116px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-top: 16px;
+  flex-wrap: wrap;
   color: #ffffff;
+  background: #ffd166;
+  position: absolute;
+  bottom: 396px;
+  padding: 16px 8px;
+  letter-spacing: 1px;
+  margin-top: 22px;
+}
+.modal p span {
+  color: #ef476f;
+  margin: 0 4px;
 }
 
 .modal #command {
@@ -565,14 +668,16 @@ input {
 }
 
 #close {
-  width: 30px;
+  min-width: 32px;
+  width: 32px;
   height: 30px;
   image-rendering: pixelated;
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  top: 40px;
-  right: 40px;
+  top: -15px;
+  right: -18px;
+  padding: 0;
 }
 
 #code-copied {
@@ -724,6 +829,27 @@ input {
   }
 }
 
+@keyframes hover {
+  0% {
+    top: -35px;
+  }
+  50% {
+    top: -45px;
+  }
+  100% {
+    top: -35px;
+  }
+}
+
+@keyframes up-down {
+  from {
+    height: 16px;
+  }
+  to {
+    height: 96px;
+  }
+}
+
 @media (max-width: 600px) {
   nav h1 {
     width: 300px;
@@ -779,25 +905,6 @@ input {
     color: white;
   }
 
-  .welcome {
-    width: 100%;
-    margin: 16px 0;
-    padding: 16px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(226, 207, 234, 0.5);
-  }
-
-  .welcome h3 {
-    text-align: center;
-    width: 300px;
-  }
-  .welcome p {
-    width: 300px;
-    padding: 16px 0;
-  }
   .searchContainer {
     height: auto;
     width: 100%;
@@ -835,6 +942,7 @@ input {
     flex-direction: column;
     width: 100%;
   }
+
   .biglink > a {
     width: 100%;
     height: 100px;

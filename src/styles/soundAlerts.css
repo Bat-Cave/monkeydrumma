@@ -5,9 +5,11 @@
 
 .soundAlerts {
   width: 100%;
+  max-width: 1000px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 128px;
 }
 
 .soundFilter {

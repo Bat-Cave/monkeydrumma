@@ -1,8 +1,8 @@
 import { withRouter } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import s from "../sounds";
 import "../styles/soundAlerts.css";
-import banana from "../images/banana.png";
+import { TwitchChat } from "react-twitch-embed";
 
 let SoundAlerts = () => {
   let [sounds, setSounds] = useState([]);
@@ -15,10 +15,10 @@ let SoundAlerts = () => {
   let [playing, setPlaying] = useState(false);
   let [showModal, setShowModal] = useState(false);
   let [command, setCommand] = useState("");
-  let [codeCopied, setCodeCopied] = useState(false);
+  // let [codeCopied, setCodeCopied] = useState(false);
   let [currentFilter, setCurrentFilter] = useState(0);
   let [search, setSearch] = useState("");
-  const textAreaRef = useRef(null);
+  // const textAreaRef = useRef(null);
 
   let playSound = async (link) => {
     currAudio.src = currSoundUrl;
@@ -50,13 +50,13 @@ let SoundAlerts = () => {
     setCommand(comm.toLowerCase());
     setShowModal(true);
   };
-  let copyToClipboard = (e) => {
-    textAreaRef.current.select();
-    document.execCommand("copy");
-    // This is just personal preference.
-    // I prefer to not show the whole text area selected.
-    e.target.focus();
-  };
+  // let copyToClipboard = (e) => {
+  //   textAreaRef.current.select();
+  //   document.execCommand("copy");
+  //   // This is just personal preference.
+  //   // I prefer to not show the whole text area selected.
+  //   e.target.focus();
+  // };
 
   let convertObject = (obj) => {
     let newObj = {};
@@ -71,8 +71,9 @@ let SoundAlerts = () => {
   };
 
   useEffect(() => {
+    let sorted = Object.keys(s.sounds).sort();
     setSounds(s.sounds);
-    setSoundKeys(Object.keys(s.sounds));
+    setSoundKeys(sorted);
     convertObject(s.sounds);
   }, []);
 
@@ -135,8 +136,9 @@ let SoundAlerts = () => {
           setSoundKeys(Object.keys(videoGame));
           break;
         default:
+          let sorted = Object.keys(s.sounds).sort();
           setSounds(s.sounds);
-          setSoundKeys(Object.keys(s.sounds));
+          setSoundKeys(sorted);
           break;
       }
     };
@@ -159,8 +161,9 @@ let SoundAlerts = () => {
     if (search !== "") {
       searchSounds(search);
     } else {
+      let sorted = Object.keys(s.sounds).sort();
       setSounds(s.sounds);
-      setSoundKeys(Object.keys(s.sounds));
+      setSoundKeys(sorted);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
@@ -273,65 +276,38 @@ let SoundAlerts = () => {
           </div>
         ))}
       </div>
-      {showModal ? (
-        <div
-          className="modal-container sa-modal"
-          onClick={(e) => {
-            e.stopPropagation();
-            setShowModal(false);
-          }}
-        >
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              id="close"
-              onClick={(e) => {
-                setShowModal(false);
-              }}
-            >
-              X
-            </button>
-            <button
-              onClick={(e) => {
-                if (!codeCopied) {
-                  e.stopPropagation();
-                  setCodeCopied(true);
-                  copyToClipboard(e);
-                  setTimeout(() => {
-                    setCodeCopied(false);
-                  }, 5000);
-                }
-              }}
-            >
-              {codeCopied ? "Code Copied!" : "Copy Code"}
-            </button>
-            <p>Redeem "Play A Sound" and type this:</p>
-            <div className="channelReward">
-              <div className="rewardDetails">
-                <div className="rewardLogo"></div>
-                <p className="rewardTitle">Play a Sound</p>
-                <img className="banana" src={banana} alt="banana" />
-              </div>
-              <textarea
-                id="command"
-                ref={textAreaRef}
-                defaultValue={command}
-                readOnly
-                autoFocus
-              ></textarea>
-              <svg className="smile" version="1.1">
-                <g>
-                  <path d="M7 11a1 1 0 100-2 1 1 0 000 2zM14 10a1 1 0 11-2 0 1 1 0 012 0zM10 14a2 2 0 002-2H8a2 2 0 002 2z"></path>
-                  <path
-                    fill-rule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0a6 6 0 11-12 0 6 6 0 0112 0z"
-                    clip-rule="evenodd"
-                  ></path>
-                </g>
-              </svg>
-            </div>
+      <div
+        className={`modal-container`}
+        style={{
+          top: `${showModal ? "0%" : "-150%"}`,
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          setShowModal(false);
+        }}
+      >
+        <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <button
+            id="close"
+            onClick={(e) => {
+              setShowModal(false);
+            }}
+          >
+            X
+          </button>
+          <p style={{ background: "#00c7ac" }}>
+            Redeem <span>"Play a Sound"</span> and type <span>{command}</span>
+          </p>
+          <div className="chatWrapper">
+            <TwitchChat
+              channel="monkeydrumma"
+              theme="dark"
+              title="Twitch Chat Embed"
+              id="twitch-chat"
+            />
           </div>
         </div>
-      ) : null}
+      </div>
     </div>
   );
 };

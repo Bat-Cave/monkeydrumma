@@ -1,16 +1,18 @@
 import gem from "../images/diamond.png";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Papa from "papaparse";
 import { withRouter } from "react-router-dom";
+import { TwitchChat } from "react-twitch-embed";
+
 let Home = () => {
   let [items, setItems] = useState([]);
   let [showModal, setShowModal] = useState(false);
   let [command, setCommand] = useState("");
-  let [codeCopied, setCodeCopied] = useState(false);
+  // let [codeCopied, setCodeCopied] = useState(false);
   // let [search, setSearch] = useState('');
   let [currentFilter, setCurrentFilter] = useState(0);
   let [maxItemsToDisplay, setMaxItemsToDisplay] = useState(30);
-  const textAreaRef = useRef(null);
+  // const textAreaRef = useRef(null);
 
   let filters = [
     "",
@@ -168,13 +170,13 @@ let Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentFilter]);
 
-  function copyToClipboard(e) {
-    textAreaRef.current.select();
-    document.execCommand("copy");
-    // This is just personal preference.
-    // I prefer to not show the whole text area selected.
-    e.target.focus();
-  }
+  // function copyToClipboard(e) {
+  //   textAreaRef.current.select();
+  //   document.execCommand("copy");
+  //   // This is just personal preference.
+  //   // I prefer to not show the whole text area selected.
+  //   e.target.focus();
+  // }
 
   return (
     <div className="home" id="shop">
@@ -214,7 +216,11 @@ let Home = () => {
           renderedItems
         ) : (
           <div className="loading">
-            <div>Loading . . .</div>
+            <div className="loader">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
         )}
         <button
@@ -249,48 +255,38 @@ let Home = () => {
           <img src="https://i.ibb.co/5cB9c2p/legendary.gif" alt="legendary" />
         </div>
       </div>
-      {showModal ? (
-        <div
-          className="modal-container"
-          onClick={(e) => {
-            e.stopPropagation();
-            setShowModal(false);
-          }}
-        >
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              id="close"
-              onClick={(e) => {
-                setShowModal(false);
-              }}
-            >
-              X
-            </button>
-            <p>Type this command in the twitch chat:</p>
-            <textarea
-              id="command"
-              ref={textAreaRef}
-              defaultValue={command}
-              readOnly
-              autoFocus
-            ></textarea>
-            <button
-              onClick={(e) => {
-                if (!codeCopied) {
-                  e.stopPropagation();
-                  setCodeCopied(true);
-                  copyToClipboard(e);
-                  setTimeout(() => {
-                    setCodeCopied(false);
-                  }, 5000);
-                }
-              }}
-            >
-              {codeCopied ? "Code Copied!" : "Copy Code"}
-            </button>
+      <div
+        className={`modal-container`}
+        style={{
+          top: `${showModal ? "0%" : "-150%"}`,
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          setShowModal(false);
+        }}
+      >
+        <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <button
+            id="close"
+            onClick={(e) => {
+              setShowModal(false);
+            }}
+          >
+            X
+          </button>
+          <p>
+            Send <span>{command}</span> in chat!
+          </p>
+          <div className="chatWrapper">
+            <TwitchChat
+              channel="monkeydrumma"
+              theme="dark"
+              title="Twitch Chat Embed"
+              id="twitch-chat"
+            />
           </div>
         </div>
-      ) : null}
+      </div>
     </div>
   );
 };
