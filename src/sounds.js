@@ -908,5 +908,26 @@ module.exports = {
       commandName: "icansmellyou",
       tags: ["movie", "memes"],
     },
+    peaceandlove: {
+      title: "Peace and Love",
+      url: "https://www.myinstants.com/media/sounds/peace-and-love.mp3",
+      commandName: "peaceandlove",
+      tags: ["memes", "sound effect"],
+      volume: 1.0,
+    },
+    buzzer: {
+      title: "Buzzer",
+      url: "https://www.myinstants.com/media/sounds/family-fued-buzzer.mp3",
+      commandName: "buzzer",
+      tags: ["sound effect"],
+      volume: 1.0,
+    },
+    iselledmywife: {
+      title: "I Selled My Wife",
+      url: "https://www.myinstants.com/media/sounds/i-selled-my-wife.mp3",
+      commandName: "iselledmywife",
+      tags: ["memes"],
+      volume: 1.0,
+    },
   },
 };
