@@ -600,7 +600,6 @@ input {
   justify-content: center;
   padding: 4px;
   margin: 24px auto;
-  position: sticky;
   top: 20px;
   z-index: 1111;
 }
