@@ -1,4 +1,5 @@
 import twitchPower from "../images/twitchskin.png";
+import magicMonkey from "../images/antiwife1-skin.png";
 import { withRouter } from "react-router-dom";
 
 let BossSkins = () => {
@@ -10,6 +11,14 @@ let BossSkins = () => {
       description:
         "This skin represents the power of teamwork represented by MonkeyDrumma's chat when they defeated The Corruptor.",
       milestone: "100 Twitch Followers",
+    },
+    {
+      name: "Magic Monkey",
+      img3DUrl: "https://i.ibb.co/k5hpDG6/skin.gif",
+      imgUrl: magicMonkey,
+      description:
+        "This skin represents the courage of MonkeyDrumma's chat when they rescued him from The Interfector.",
+      milestone: "200 Twitch Followers",
     },
   ];
 
@@ -25,7 +34,7 @@ let BossSkins = () => {
           <h6>{s.description}</h6>
           <a
             href={s.imgUrl}
-            download="twitchpower.png"
+            download={`${s.name.replace(" ", "-")}.png`}
             target="_blank"
             rel="noreferrer"
             alt={s.name}
