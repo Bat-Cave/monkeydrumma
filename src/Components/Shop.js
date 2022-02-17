@@ -8,11 +8,10 @@ let Home = () => {
   let [items, setItems] = useState([]);
   let [showModal, setShowModal] = useState(false);
   let [command, setCommand] = useState("");
-  // let [codeCopied, setCodeCopied] = useState(false);
+  let [codeCopied, setCodeCopied] = useState(false);
   // let [search, setSearch] = useState('');
   let [currentFilter, setCurrentFilter] = useState(0);
   let [maxItemsToDisplay, setMaxItemsToDisplay] = useState(30);
-  // const textAreaRef = useRef(null);
 
   let filters = [
     "",
@@ -40,8 +39,10 @@ let Home = () => {
       if (e.rarity === "legendary") {
         imageUrl = "https://i.ibb.co/5cB9c2p/legendary.gif";
       }
+      let isNew = Date.now() - e["date added"] < 2592000000 ? true : false;
       return (
         <div className="item" key={i}>
+          {isNew && <span className="new-item">New</span>}
           {e.owner === "none" ? (
             <h3>{e.name}</h3>
           ) : (
@@ -170,13 +171,13 @@ let Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentFilter]);
 
-  // function copyToClipboard(e) {
-  //   textAreaRef.current.select();
-  //   document.execCommand("copy");
-  //   // This is just personal preference.
-  //   // I prefer to not show the whole text area selected.
-  //   e.target.focus();
-  // }
+  const handleCopy = (name) => {
+    navigator.clipboard.writeText(name);
+    setCodeCopied(true);
+    setTimeout(() => {
+      setCodeCopied(false);
+    }, 3000);
+  };
 
   return (
     <div className="home" id="shop">
@@ -276,6 +277,12 @@ let Home = () => {
           </button>
           <p>
             Send <span>{command}</span> in chat!
+            <button
+              style={{ display: "block", width: "100%" }}
+              onClick={() => handleCopy(command)}
+            >
+              {codeCopied ? "Command Copied!" : "Copy Command"}
+            </button>
           </p>
           <div className="chatWrapper">
             <TwitchChat

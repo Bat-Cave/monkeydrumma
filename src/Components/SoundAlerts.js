@@ -15,7 +15,7 @@ let SoundAlerts = () => {
   let [playing, setPlaying] = useState(false);
   let [showModal, setShowModal] = useState(false);
   let [command, setCommand] = useState("");
-  // let [codeCopied, setCodeCopied] = useState(false);
+  let [codeCopied, setCodeCopied] = useState(false);
   let [currentFilter, setCurrentFilter] = useState(0);
   let [search, setSearch] = useState("");
   // const textAreaRef = useRef(null);
@@ -135,6 +135,24 @@ let SoundAlerts = () => {
           setSounds(videoGame);
           setSoundKeys(Object.keys(videoGame));
           break;
+        case 7:
+          let minecraft = Object.keys(s.sounds).reduce(function (r, e) {
+            if (s.sounds[e].tags.includes("minecraft")) r[e] = s.sounds[e];
+            return r;
+          }, {});
+          setSounds(minecraft);
+          setSoundKeys(Object.keys(minecraft));
+          break;
+        case 99:
+          let newSounds = Object.keys(s.sounds).reduce(function (r, e) {
+            if (Date.now() - s.sounds[e].dateAdded < 2592000000) {
+              r[e] = s.sounds[e];
+            }
+            return r;
+          }, {});
+          setSounds(newSounds);
+          setSoundKeys(Object.keys(newSounds));
+          break;
         default:
           let sorted = Object.keys(s.sounds).sort();
           setSounds(s.sounds);
@@ -173,6 +191,14 @@ let SoundAlerts = () => {
     // eslint-disable-next-line
   }, [currSoundUrl]);
 
+  const handleCopy = (name) => {
+    navigator.clipboard.writeText(name);
+    setCodeCopied(true);
+    setTimeout(() => {
+      setCodeCopied(false);
+    }, 3000);
+  };
+
   return (
     <div className="home">
       <div className="welcome nowhiteborder">
@@ -188,6 +214,9 @@ let SoundAlerts = () => {
         <div>
           <h3>Filters</h3>
           <div>
+            <button onClick={() => setCurrentFilter(99)} className="new">
+              New
+            </button>
             <button onClick={() => setCurrentFilter(1)} className="memes">
               Memes
             </button>
@@ -206,6 +235,9 @@ let SoundAlerts = () => {
             <button onClick={() => setCurrentFilter(6)} className="videogame">
               Video Game
             </button>
+            <button onClick={() => setCurrentFilter(7)} className="minecraft">
+              Minecraft
+            </button>
           </div>
         </div>
       </div>
@@ -220,7 +252,7 @@ let SoundAlerts = () => {
           animation: `${
             currentFilter !== 0 ? "fade-in .5s ease" : "fade-out .5s ease"
           }`,
-          height: `${currentFilter !== 0 ? "32px" : "0"}`,
+          height: `${currentFilter !== 0 ? "36px" : "0"}`,
         }}
       >
         <button onClick={() => setCurrentFilter(0)} className="clear">
@@ -228,53 +260,58 @@ let SoundAlerts = () => {
         </button>
       </div>
       <div className="soundAlerts">
-        {soundKeys.map((s, i) => (
-          <div
-            key={i}
-            className="sound"
-            onClick={() => handleClick(sounds[s].commandName)}
-          >
-            <div className="soundInfo">
-              <h3>{sounds[s].title}</h3>
-              {currSoundId === `sound-${i}` ? (
-                <button
-                  className="soundButton"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handlePause(`sound-${i}`, sounds[s].url);
-                  }}
-                  id={`sound-${i}`}
-                >
-                  <i className="fas fa-pause"></i>
-                </button>
-              ) : (
-                <button
-                  className="soundButton"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handlePlay(`sound-${i}`, sounds[s].url);
-                  }}
-                  id={`sound-${i}`}
-                >
-                  <i className="fas fa-play"></i>
-                </button>
-              )}
-            </div>
-            <div className="soundTags">
-              {sounds[s].tags.map((t, i) => {
-                return (
-                  <span
-                    key={`tag-${i}`}
-                    className={`tag ${t.split(" ").join("")}`}
+        {soundKeys.map((s, i) => {
+          let isNew =
+            Date.now() - sounds[s].dateAdded < 2592000000 ? true : false;
+          return (
+            <div
+              key={i}
+              className="sound"
+              onClick={() => handleClick(sounds[s].commandName)}
+            >
+              {isNew && <span className="new-item">New</span>}
+              <div className="soundInfo">
+                <h3>{sounds[s].title}</h3>
+                {currSoundId === `sound-${i}` ? (
+                  <button
+                    className="soundButton"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePause(`sound-${i}`, sounds[s].url);
+                    }}
+                    id={`sound-${i}`}
                   >
-                    {t}
-                  </span>
-                );
-              })}
+                    <i className="fas fa-pause"></i>
+                  </button>
+                ) : (
+                  <button
+                    className="soundButton"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePlay(`sound-${i}`, sounds[s].url);
+                    }}
+                    id={`sound-${i}`}
+                  >
+                    <i className="fas fa-play"></i>
+                  </button>
+                )}
+              </div>
+              <div className="soundTags">
+                {sounds[s].tags.map((t, i) => {
+                  return (
+                    <span
+                      key={`tag-${i}`}
+                      className={`tag ${t.split(" ").join("")}`}
+                    >
+                      {t}
+                    </span>
+                  );
+                })}
+              </div>
+              <p className="link">play on stream</p>
             </div>
-            <p className="link">play on stream</p>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div
         className={`modal-container`}
@@ -297,6 +334,12 @@ let SoundAlerts = () => {
           </button>
           <p style={{ background: "#00c7ac" }}>
             Redeem <span>"Play a Sound"</span> and type <span>{command}</span>
+            <button
+              style={{ display: "block", width: "100%" }}
+              onClick={() => handleCopy(command)}
+            >
+              {codeCopied ? "Command Copied!" : "Copy Command"}
+            </button>
           </p>
           <div className="chatWrapper">
             <TwitchChat

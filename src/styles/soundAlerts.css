@@ -168,7 +168,9 @@
   text-shadow: 1px 1px black;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
 }
-
+.new {
+  background: #06d6a0;
+}
 .memes {
   background: #ef476f;
 }
@@ -176,7 +178,7 @@
   background: #ffd166;
 }
 .soundeffect {
-  background: #06d6a0;
+  background: #6247aa;
 }
 .music {
   background: #26547c;
@@ -185,6 +187,9 @@
   background: #79267c;
 }
 .videogame {
+  background: #ef47c3;
+}
+.minecraft {
   background: #7c4e26;
 }
 .clear {
@@ -204,7 +209,7 @@
     opacity: 0;
   }
   50% {
-    height: 32px;
+    height: 36px;
     opacity: 0;
   }
   100% {
@@ -214,11 +219,11 @@
 
 @keyframes fade-out {
   0% {
-    height: 32px;
+    height: 36px;
     opacity: 1;
   }
   50% {
-    height: 32px;
+    height: 36px;
     opacity: 0;
   }
   100% {
@@ -244,6 +249,7 @@
   color: white;
   background: #6247aa;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  margin-top: 40px;
 }
 
 .soundButton:hover {
