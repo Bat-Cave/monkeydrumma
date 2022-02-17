@@ -955,3 +955,61 @@ input {
     width: 100%;
   }
 }
+
+.new-item {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 10px;
+  text-align: center;
+  z-index: 111;
+}
+
+.new-item:before {
+  position: absolute;
+  right: 0;
+  top: 0;
+  content: "";
+  width: 40px;
+  height: 40px;
+  background: #06d6a0;
+  transform: rotate(45deg);
+  z-index: -1;
+  animation: new-rotate-offset 5s linear infinite;
+}
+
+.new-item:after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  content: "";
+  width: 40px;
+  height: 40px;
+  background: #06d6a0;
+  transform: rotate(0);
+  z-index: -1;
+  animation: new-rotate 5s linear infinite;
+}
+
+@keyframes new-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes new-rotate-offset {
+  from {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(405deg);
+  }
+}
